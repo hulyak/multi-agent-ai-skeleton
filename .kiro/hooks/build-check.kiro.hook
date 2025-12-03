@@ -1,0 +1,12 @@
+{
+  "name": "Build Verification",
+  "description": "Verify the project builds successfully after major changes",
+  "trigger": {
+    "type": "onAgentComplete"
+  },
+  "action": {
+    "type": "agentMessage",
+    "message": "✅ Changes complete!\n\nRun a build check to ensure everything works:\n```bash\nnpm run build\n```\n\nThis catches TypeScript errors and ensures production readiness."
+  },
+  "enabled": true
+}

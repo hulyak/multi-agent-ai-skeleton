@@ -1,13 +1,33 @@
 # 🎃 Multi-Agent AI Skeleton
 
-> A Kiro-powered skeleton to build multi-agent AI applications with a spooky twist!
+> Resurrecting the lost art of multi-agent systems with modern AI orchestration
 
 [![Built for Kiroween 2024](https://img.shields.io/badge/Kiroween-2024-purple?style=for-the-badge&logo=ghost)](https://kiro.ai)
-[![Skeleton Crew](https://img.shields.io/badge/Category-Skeleton%20Crew-orange?style=for-the-badge)](https://kiro.ai)
+[![Resurrection](https://img.shields.io/badge/Category-Resurrection-orange?style=for-the-badge)](https://kiro.ai)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
 A production-ready, modular foundation for building multi-agent AI orchestration systems. Features event-driven architecture, comprehensive testing, and a delightfully spooky Halloween-themed UI.
+
+---
+
+## 💀 The Resurrection Story
+
+**Dead Technology:** Multi-agent systems from the 1990s-2000s - complex, brittle, and abandoned for simpler monolithic approaches.
+
+**Brought Back to Life:** Modern AI orchestration with:
+- Event-driven message passing (replacing rigid RPC)
+- Shared state management (replacing distributed databases)
+- Property-based testing (replacing fragile unit tests)
+- TypeScript strict mode (replacing loose contracts)
+- Real-time monitoring (replacing blind execution)
+
+**Solving Tomorrow's Problems:** As AI systems grow more complex, we need coordinated agents that can:
+- Specialize in specific tasks
+- Communicate asynchronously
+- Recover from failures gracefully
+- Scale independently
+- Maintain context across workflows
 
 ---
 
@@ -342,7 +362,7 @@ Model Context Protocol integration:
 
 ## 🤝 Contributing
 
-This is a Kiroween 2024 submission for the Skeleton Crew category. Feel free to fork and adapt for your own multi-agent projects!
+This is a Kiroween 2024 submission for the Resurrection category. Feel free to fork and adapt for your own multi-agent projects!
 
 ### Development Workflow
 1. Create feature specs in `.kiro/specs/`
@@ -391,7 +411,7 @@ MIT License - feel free to use this skeleton for your own projects!
 
 **Built with 💀 for Kiroween 2024**
 
-*Skeleton Crew Category*
+*Resurrection Category*
 
 🎃 👻 💀 🦇 🕷️ 🕸️
 

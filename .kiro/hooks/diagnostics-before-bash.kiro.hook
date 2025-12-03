@@ -1,0 +1,11 @@
+{
+  "why": "To encourage using getDiagnostics tool instead of bash commands for checking errors",
+  "id": "diagnostics-before-bash",
+  "name": "Use getDiagnostics Over Bash",
+  "description": "Reminds to use getDiagnostics tool instead of bash commands for checking errors - more efficient workflow",
+  "eventType": "messageSent",
+  "filePatterns": null,
+  "hookAction": "askAgent",
+  "command": null,
+  "outputPrompt": "🔍 Checking for errors?\n\nUse getDiagnostics tool instead of bash:\n✅ getDiagnostics(['src/file.ts']) - Fast, built-in\n❌ executeBash('tsc --noEmit') - Slower\n\nThis is the efficient approach we learned during development!"
+}

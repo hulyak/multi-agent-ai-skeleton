@@ -1,0 +1,11 @@
+{
+  "why": "To automatically run property-based tests when agent or orchestration files are saved",
+  "id": "test-on-save",
+  "name": "Run Tests on Save",
+  "description": "Automatically run property-based tests when agent or orchestration files are saved",
+  "eventType": "fileEdited",
+  "filePatterns": "src/agents/**/*.ts,src/orchestration/**/*.ts",
+  "hookAction": "runCommand",
+  "command": "npm test -- --testPathPattern=${filePath} --passWithNoTests",
+  "outputPrompt": null
+}

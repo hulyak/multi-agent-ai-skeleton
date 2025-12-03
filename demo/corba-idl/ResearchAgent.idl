@@ -1,0 +1,98 @@
+// CORBA IDL - Research Agent Interface (circa 1995)
+// Academic research assistant using CORBA distributed objects
+
+module ResearchSystem {
+  
+  // Document structure
+  struct Document {
+    string documentId;
+    string title;
+    string content;
+    sequence<string> authors;
+    string publicationDate;
+    string source;
+    double relevanceScore;
+  };
+  
+  // Citation structure
+  struct Citation {
+    string citationId;
+    string documentId;
+    string citationText;
+    string format;
+    long pageNumber;
+    sequence<string> authors;
+    string year;
+  };
+  
+  // Summary structure
+  struct Summary {
+    string summaryId;
+    string documentId;
+    string summaryText;
+    long wordCount;
+    sequence<string> keyPoints;
+    double compressionRatio;
+  };
+  
+  // Search query structure
+  struct SearchQuery {
+    string queryText;
+    sequence<string> keywords;
+    sequence<string> filters;
+    long maxResults;
+    string sortBy;
+  };
+  
+  // Research Agent Interface
+  interface ResearchAgent {
+    
+    // Retrieve documents matching search query
+    sequence<Document> retrieveDocuments(in SearchQuery query)
+      raises (RetrievalException);
+    
+    // Generate summary for a document
+    Summary summarizeDocument(in string documentId, in long targetWordCount)
+      raises (SummarizationException);
+    
+    // Generate citations for a document
+    sequence<Citation> generateCitations(in string documentId, in string format)
+      raises (CitationException);
+    
+    // Search within document content
+    sequence<string> searchInDocument(in string documentId, in string searchTerm)
+      raises (SearchException);
+    
+    // Get document by ID
+    Document getDocument(in string documentId)
+      raises (DocumentNotFoundException);
+  };
+  
+  // Exception definitions
+  exception RetrievalException {
+    string query;
+    string reason;
+    long errorCode;
+  };
+  
+  exception SummarizationException {
+    string documentId;
+    string reason;
+  };
+  
+  exception CitationException {
+    string documentId;
+    string format;
+    string reason;
+  };
+  
+  exception SearchException {
+    string searchTerm;
+    string reason;
+  };
+  
+  exception DocumentNotFoundException {
+    string documentId;
+  };
+  
+}; // end module ResearchSystem

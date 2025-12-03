@@ -1,12 +1,15 @@
 // Orchestration Layer Exports
 
-export { MessageBus, MessageHandler, Subscription, DeliveryMetrics, DeliveryResult, RetryManager } from './MessageBus';
+export { MessageBus } from './MessageBus';
+export type { MessageHandler, Subscription, DeliveryMetrics, DeliveryResult, RetryManager } from './MessageBus';
 export { WorkflowStateManager } from './WorkflowStateManager';
 export { 
   ErrorHandler, 
   ErrorLogger, 
   ErrorClassifier,
-  FailureNotificationSystem,
+  FailureNotificationSystem
+} from './ErrorHandler';
+export type {
   ErrorContext,
   ErrorLogEntry,
   FailureNotification,
@@ -14,26 +17,28 @@ export {
   ErrorHandlingStrategy
 } from './ErrorHandler';
 export { AgentOrchestrator } from './AgentOrchestrator';
-export { SpecLoader, SpecLoaderConfig, SpecChangeEvent } from './SpecLoader';
-export { ResearchWorkflowCoordinator, ResearchReport, ResearchWorkflowConfig } from './ResearchWorkflowCoordinator';
-export { 
-  PerformanceMonitor, 
+export { SpecLoader } from './SpecLoader';
+export type { SpecLoaderConfig, SpecChangeEvent } from './SpecLoader';
+export { ResearchWorkflowCoordinator } from './ResearchWorkflowCoordinator';
+export type { ResearchReport, ResearchWorkflowConfig } from './ResearchWorkflowCoordinator';
+export { PerformanceMonitor } from './PerformanceMonitor';
+export type { 
   PerformanceMetrics, 
   AgentProcessingMetrics,
   RequestMetric,
   RoutingMetric,
   AgentProcessingMetric
 } from './PerformanceMonitor';
-export {
-  DebugManager,
+export { DebugManager } from './DebugManager';
+export type {
   DebugConfig,
   MessageLogEntry,
   AgentStateSnapshot,
   WorkflowStateSnapshot,
   ReplayResult
 } from './DebugManager';
-export {
-  ResourceAllocator,
+export { ResourceAllocator } from './ResourceAllocator';
+export type {
   ResourceAllocationConfig,
   ResourceMetrics,
   SchedulingDecision

@@ -1,0 +1,11 @@
+{
+  "why": "To keep specs and implementation in sync when spec files are modified",
+  "id": "spec-validation",
+  "name": "Validate Spec Changes",
+  "description": "When spec files are modified, remind to update corresponding implementation and tests",
+  "eventType": "fileEdited",
+  "filePatterns": ".kiro/specs/**/*.md",
+  "hookAction": "askAgent",
+  "command": null,
+  "outputPrompt": "📋 Spec file updated!\n\nRemember to:\n1. Update corresponding implementation in src/\n2. Update or add property-based tests\n3. Run tests to verify: npm test\n4. Update documentation if needed"
+}

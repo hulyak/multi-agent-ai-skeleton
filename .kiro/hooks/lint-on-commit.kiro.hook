@@ -1,0 +1,11 @@
+{
+  "why": "To remind developers to run ESLint before committing code",
+  "id": "lint-on-commit",
+  "name": "Lint Before Commit",
+  "description": "Run ESLint on staged files before committing to catch issues early",
+  "eventType": "messageSent",
+  "filePatterns": null,
+  "hookAction": "askAgent",
+  "command": null,
+  "outputPrompt": "Before committing, please run: npm run lint -- --fix\n\nThis ensures code quality and catches TypeScript errors."
+}

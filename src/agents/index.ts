@@ -1,24 +1,24 @@
 // Agents Module Exports
 
-export { Agent, BaseAgent, HealthStatus, MessageResponse } from './Agent';
-export {
-  IntentDetectionAgent,
+export { BaseAgent } from './Agent';
+export type { Agent, HealthStatus, MessageResponse } from './Agent';
+export { IntentDetectionAgent, MockLLMProvider } from './IntentDetectionAgent';
+export type {
   IntentType,
   Intent,
   Entity,
   IntentClassificationResult,
-  LLMProvider,
-  MockLLMProvider
+  LLMProvider
 } from './IntentDetectionAgent';
-export {
-  FAQAgent,
+export { FAQAgent } from './FAQAgent';
+export type {
   FAQEntry,
   FAQSearchResult,
   FAQResponse,
   FAQKnowledgeBase
 } from './FAQAgent';
-export {
-  EscalationAgent,
+export { EscalationAgent } from './EscalationAgent';
+export type {
   ComplexityScore,
   ComplexityFactor,
   EscalationTicket,
@@ -26,21 +26,21 @@ export {
   EscalationResult,
   EscalationQueue
 } from './EscalationAgent';
-export {
-  RetrievalAgent,
+export { RetrievalAgent } from './RetrievalAgent';
+export type {
   Document,
   DocumentSection,
   RetrievalResult,
   DocumentIndex
 } from './RetrievalAgent';
-export {
-  SummarizationAgent,
+export { SummarizationAgent } from './SummarizationAgent';
+export type {
   Summary,
   SummarizationResult,
   SummarizationConfig
 } from './SummarizationAgent';
-export {
-  CitationAgent,
+export { CitationAgent } from './CitationAgent';
+export type {
   Citation,
   CitationStyle,
   FormattedCitation,

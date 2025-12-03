@@ -1,0 +1,11 @@
+{
+  "why": "To ensure WCAG AA compliance when UI components are modified and prevent repeated accessibility issues",
+  "id": "accessibility-check",
+  "name": "Accessibility Compliance Check",
+  "description": "Reminds to verify WCAG AA compliance when UI components are modified - prevents repeated accessibility issues",
+  "eventType": "fileEdited",
+  "filePatterns": "src/ui/**/*.tsx",
+  "hookAction": "askAgent",
+  "command": null,
+  "outputPrompt": "♿ UI Component Modified - Accessibility Checklist:\n\n✓ Color contrast ratio ≥ 4.5:1 (use WebAIM checker)\n✓ Keyboard navigation works (Tab, Enter, Escape)\n✓ ARIA labels for interactive elements\n✓ respects prefers-reduced-motion\n✓ Screen reader friendly\n\nThis hook prevents the accessibility issues we had to fix multiple times during development!"
+}

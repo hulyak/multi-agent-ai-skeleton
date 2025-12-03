@@ -1,0 +1,11 @@
+{
+  "why": "To maintain import path consistency using @/ alias instead of relative imports",
+  "id": "import-path-reminder",
+  "name": "Import Path Consistency",
+  "description": "Reminds to use @/ path alias instead of relative imports - solves repeated import path issues",
+  "eventType": "fileEdited",
+  "filePatterns": "src/**/*.ts,src/**/*.tsx",
+  "hookAction": "askAgent",
+  "command": null,
+  "outputPrompt": "📦 File saved - Import Path Reminder:\n\nUse path alias for consistency:\n✅ import { Agent } from '@/agents'\n❌ import { Agent } from '../../agents'\n\nThis prevents the import path confusion we encountered multiple times!"
+}

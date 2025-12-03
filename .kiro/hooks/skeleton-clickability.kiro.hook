@@ -1,0 +1,11 @@
+{
+  "why": "To prevent SVG interactivity issues by reminding to add pointer-events to interactive elements",
+  "id": "skeleton-clickability",
+  "name": "SVG Interactivity Check",
+  "description": "Reminds to add pointer-events when creating interactive SVG elements - prevents the skeleton clickability bug we fixed",
+  "eventType": "fileEdited",
+  "filePatterns": "src/ui/**/*Skeleton*.tsx",
+  "hookAction": "askAgent",
+  "command": null,
+  "outputPrompt": "🦴 Skeleton Component Modified!\n\nFor interactive SVG elements, remember:\n✅ Add style={{ pointerEvents: 'all' }} to clickable elements\n✅ Add onClick handlers\n✅ Add cursor-pointer className\n✅ Test click functionality\n\nThis prevents the 'can't click skeleton parts' issue we debugged!"
+}

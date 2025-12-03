@@ -1,0 +1,11 @@
+{
+  "why": "To remind developers to write property-based tests for new or modified agents",
+  "id": "property-test-reminder",
+  "name": "Property Test Reminder",
+  "description": "Remind to write property-based tests for new agents",
+  "eventType": "fileEdited",
+  "filePatterns": "src/agents/*Agent.ts",
+  "hookAction": "askAgent",
+  "command": null,
+  "outputPrompt": "🧪 New or modified agent detected!\n\nDon't forget to:\n1. Create property-based test in __tests__/\n2. Test with fast-check for 100+ iterations\n3. Validate correctness properties from design doc\n4. Tag test with: **Feature: {feature_name}, Property {number}**"
+}

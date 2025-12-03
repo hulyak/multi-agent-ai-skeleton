@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "name": "YAML Spec to TypeScript Agent Generator",
+  "description": "Watches for YAML file saves in the specs folder, reads the agent specification, generates matching TypeScript interfaces for inputs/outputs, creates a stub implementation of the agent class with all required methods, saves it to packages/skeleton/src/agents/generated/[agent-name].ts, runs a typecheck to ensure it compiles, and displays a success message with the file path. If there's an error in the spec, shows a friendly error message without generating broken code. Safe to run multiple times on the same spec.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "specs/*.yaml",
+      "specs/*.yml"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A YAML specification file has been saved in the specs folder. Please:\n\n1. Read and parse the YAML specification file to extract:\n   - Agent name\n   - Input interface structure\n   - Output interface structure\n   - Required methods and their signatures\n   - Any validation rules or constraints\n\n2. Validate the specification:\n   - Check for required fields (name, inputs, outputs, methods)\n   - Verify proper YAML syntax\n   - Ensure type definitions are valid TypeScript types\n   - If validation fails, display a friendly error message explaining what's wrong and STOP (do not generate code)\n\n3. Generate TypeScript code:\n   - Create input interface with proper TypeScript types\n   - Create output interface with proper TypeScript types\n   - Create agent class extending BaseAgent (from @/agents/Agent)\n   - Implement all required methods as stubs with proper signatures\n   - Add JSDoc comments explaining each method\n   - Include proper imports\n\n4. Save the generated file:\n   - Path: packages/skeleton/src/agents/generated/[agent-name].ts\n   - Create the generated directory if it doesn't exist\n   - If file exists, overwrite it (safe to run multiple times)\n\n5. Run typecheck:\n   - Use getDiagnostics to check for TypeScript errors in the generated file\n   - If errors exist, display them and explain what went wrong\n   - If successful, show a success message with the file path\n\n6. Display result:\n   - Success: \"✅ Generated agent implementation: packages/skeleton/src/agents/generated/[agent-name].ts - Typecheck passed!\"\n   - Error: \"❌ Error in spec: [friendly explanation of what's wrong]\"\n\nFollow the project's TypeScript strict mode conventions and coding style from the workspace rules."
+  }
+}

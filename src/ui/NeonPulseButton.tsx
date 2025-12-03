@@ -95,7 +95,7 @@ export const NeonPulseButton: React.FC<NeonPulseButtonProps> = ({
             repeatDelay: 0.5
           }
         }}
-        {...props}
+        {...(props as any)}
       >
         {/* Glow effect layer */}
         {!disabled && (

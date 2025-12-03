@@ -1,6 +1,6 @@
 // GET /api/metrics - Retrieve performance metrics
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { AgentOrchestrator } from '@/orchestration/AgentOrchestrator';
 
 // Global orchestrator instance (in production, this would be managed differently)
@@ -13,7 +13,7 @@ function getOrchestrator(): AgentOrchestrator {
   return orchestrator;
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Get orchestrator
     const orch = getOrchestrator();

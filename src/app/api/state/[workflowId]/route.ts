@@ -14,9 +14,10 @@ function getOrchestrator(): AgentOrchestrator {
 }
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { workflowId: string } }
+  _request: NextRequest,
+  context: { params: Promise<{ workflowId: string }> }
 ) {
+  const params = await context.params;
   const requestId = `req-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   const orch = getOrchestrator();
   
@@ -57,9 +58,9 @@ export async function GET(
     const workflowState = orch.getWorkflowState(workflowId);
 
     // Convert Map to array for JSON serialization
-    const tasksArray = Array.from(workflowState.tasks.entries()).map(([id, task]) => ({
-      id,
+    const tasksArray = Array.from(workflowState.tasks.entries()).map(([taskId, task]) => ({
       ...task,
+      id: taskId,
       // Convert Error to serializable format if present
       error: task.error ? {
         message: task.error.message,

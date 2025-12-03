@@ -1,7 +1,7 @@
 // Demo script to showcase SpecLoader functionality
 // This is not a test file, just a demonstration
 
-import { SpecLoader } from '../SpecLoader';
+import { SpecLoader } from './SpecLoader';
 import * as path from 'path';
 
 async function demonstrateSpecLoader() {

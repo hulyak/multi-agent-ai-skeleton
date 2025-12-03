@@ -198,8 +198,8 @@ export class IntentDetectionAgent extends BaseAgent {
    */
   async routeToHandler(
     intent: Intent,
-    query: string,
-    originalMessage: MessageObject
+    _query: string,
+    _originalMessage: MessageObject
   ): Promise<string> {
     let targetAgentId: string;
     

@@ -493,7 +493,7 @@ export default function Home() {
           </motion.div>
           
           {/* Comparison Cards */}
-          <div className="grid md:grid-cols-3 gap-8" role="region" aria-label="Application comparison">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8" role="region" aria-label="Application comparison">
             {/* Support Copilot */}
             <motion.article 
               className="bg-spooky-bg-secondary/50 backdrop-blur-sm border border-spooky-border-subtle rounded-2xl p-8 hover:border-spooky-accent-purple/50 transition-all duration-300 hover:shadow-lg hover:shadow-spooky-accent-purple/10"
@@ -732,6 +732,88 @@ export default function Home() {
                       </span>
                       <span className="text-xs px-3 py-1.5 bg-spooky-accent-orange/10 text-spooky-accent-orange rounded-lg border border-spooky-accent-orange/20" role="listitem">
                         Animation
+                      </span>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
+            </motion.article>
+            
+            {/* Retro CORBA Demo */}
+            <motion.article 
+              className="bg-spooky-bg-secondary/50 backdrop-blur-sm border border-spooky-border-subtle rounded-2xl p-8 hover:border-[#00ffff]/50 transition-all duration-300 hover:shadow-lg hover:shadow-[#00ffff]/10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <header className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-[#00ffff]/10 flex items-center justify-center text-2xl">
+                    🌐
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#00ffff]">
+                    Retro CORBA
+                  </h3>
+                </div>
+                <Link 
+                  href="/retro-corba" 
+                  className="px-4 py-2 bg-[#00ffff]/10 hover:bg-[#00ffff]/20 text-[#00ffff] rounded-lg text-sm font-medium transition-colors"
+                  aria-label="Open Retro CORBA Demo"
+                >
+                  Launch →
+                </Link>
+              </header>
+              
+              <dl className="space-y-6">
+                <div>
+                  <dt className="text-xs font-semibold text-spooky-text-muted uppercase tracking-wider mb-2">
+                    Purpose
+                  </dt>
+                  <dd className="text-spooky-text-secondary/80">
+                    Experience multi-agent systems through 1990s CORBA technology with retro aesthetics
+                  </dd>
+                </div>
+                
+                <div>
+                  <dt className="text-xs font-semibold text-spooky-text-muted uppercase tracking-wider mb-3">
+                    Key Features
+                  </dt>
+                  <dd>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="flex items-center gap-2 text-sm text-spooky-text-secondary/80">
+                        <span className="text-[#00ffff]">✓</span> IDL interfaces
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-spooky-text-secondary/80">
+                        <span className="text-[#00ffff]">✓</span> IIOP protocol
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-spooky-text-secondary/80">
+                        <span className="text-[#00ffff]">✓</span> 90s UI
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-spooky-text-secondary/80">
+                        <span className="text-[#00ffff]">✓</span> Nostalgia
+                      </div>
+                    </div>
+                  </dd>
+                </div>
+                
+                <div>
+                  <dt className="text-xs font-semibold text-spooky-text-muted uppercase tracking-wider mb-3">
+                    Technology
+                  </dt>
+                  <dd>
+                    <div className="flex flex-wrap gap-2" role="list" aria-label="Retro technologies">
+                      <span className="text-xs px-3 py-1.5 bg-[#00ffff]/10 text-[#00ffff] rounded-lg border border-[#00ffff]/20" role="listitem">
+                        CORBA 2.0
+                      </span>
+                      <span className="text-xs px-3 py-1.5 bg-[#00ffff]/10 text-[#00ffff] rounded-lg border border-[#00ffff]/20" role="listitem">
+                        Netscape
+                      </span>
+                      <span className="text-xs px-3 py-1.5 bg-[#00ffff]/10 text-[#00ffff] rounded-lg border border-[#00ffff]/20" role="listitem">
+                        IDL
+                      </span>
+                      <span className="text-xs px-3 py-1.5 bg-[#00ffff]/10 text-[#00ffff] rounded-lg border border-[#00ffff]/20" role="listitem">
+                        ORB
                       </span>
                     </div>
                   </dd>

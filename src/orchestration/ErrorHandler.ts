@@ -291,12 +291,12 @@ export interface ErrorHandlingStrategy {
 
 export class ErrorHandler {
   private logger: ErrorLogger;
-  private classifier: ErrorClassifier;
   private notificationSystem: FailureNotificationSystem;
 
   constructor() {
     this.logger = new ErrorLogger();
-    this.classifier = new ErrorClassifier();
+    // Classifier instantiated but not used in current implementation
+    new ErrorClassifier();
     this.notificationSystem = new FailureNotificationSystem();
   }
 

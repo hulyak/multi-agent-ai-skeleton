@@ -1,7 +1,6 @@
 // Resource Allocator - Fair scheduling and resource management for concurrent agents
 
-import { Agent } from '../agents/Agent';
-import { MessageObject, Priority } from '../types';
+import { MessageObject } from '../types';
 
 // ============================================================================
 // Interfaces

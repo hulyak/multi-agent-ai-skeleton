@@ -1,0 +1,11 @@
+{
+  "why": "To ensure compliance with Skeleton Crew category requirement of 2 separate repo folders",
+  "id": "two-app-structure-reminder",
+  "name": "Skeleton Crew Compliance",
+  "description": "Reminds about 2 separate repo folders requirement for Skeleton Crew category - critical for submission",
+  "eventType": "messageSent",
+  "filePatterns": null,
+  "hookAction": "askAgent",
+  "command": null,
+  "outputPrompt": "🎃 Kiroween Submission Checklist:\n\n⚠️ CRITICAL: Skeleton Crew requires 2 separate repo folders!\n\nCurrent structure check:\n□ skeleton/ - Core framework\n□ app-support/ - Application 1\n□ app-research/ - Application 2\n\nIf not structured this way, see RESTRUCTURE_GUIDE.md\n\nThis prevents the compliance issue we discovered!"
+}

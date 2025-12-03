@@ -14,9 +14,10 @@ function getOrchestrator(): AgentOrchestrator {
 }
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { agentId: string } }
+  _request: NextRequest,
+  context: { params: Promise<{ agentId: string }> }
 ) {
+  const params = await context.params;
   const requestId = `req-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   const orch = getOrchestrator();
   
@@ -85,8 +86,7 @@ export async function GET(
       errorType: log.errorType,
       message: log.error.message,
       stack: log.error.stack,
-      context: log.context,
-      retryStrategy: log.retryStrategy
+      context: log.context
     }));
 
     // End request tracking

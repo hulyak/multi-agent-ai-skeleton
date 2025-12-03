@@ -1,0 +1,93 @@
+// CORBA IDL - Support Agent Interface (circa 1995)
+// Customer support system using CORBA distributed objects
+
+module SupportSystem {
+  
+  // Customer inquiry structure
+  struct CustomerInquiry {
+    string inquiryId;
+    string customerId;
+    string subject;
+    string description;
+    string category;
+    long priority;
+    long timestamp;
+  };
+  
+  // Support ticket structure
+  struct SupportTicket {
+    string ticketId;
+    string inquiryId;
+    string assignedAgent;
+    string status;
+    string resolution;
+    long createdTime;
+    long resolvedTime;
+  };
+  
+  // FAQ entry structure
+  struct FAQEntry {
+    string faqId;
+    string question;
+    string answer;
+    sequence<string> keywords;
+    double relevanceScore;
+  };
+  
+  // Intent classification result
+  struct IntentResult {
+    string intent;
+    double confidence;
+    sequence<string> entities;
+  };
+  
+  // Support Agent Interface
+  interface SupportAgent {
+    
+    // Classify customer intent from inquiry
+    IntentResult classifyIntent(in CustomerInquiry inquiry)
+      raises (ClassificationException);
+    
+    // Search FAQ database for relevant entries
+    sequence<FAQEntry> searchFAQ(in string query, in long maxResults)
+      raises (SearchException);
+    
+    // Create support ticket from inquiry
+    SupportTicket createTicket(in CustomerInquiry inquiry)
+      raises (TicketCreationException);
+    
+    // Escalate ticket to human agent
+    void escalateTicket(in string ticketId, in string reason)
+      raises (EscalationException);
+    
+    // Get ticket status
+    string getTicketStatus(in string ticketId)
+      raises (TicketNotFoundException);
+  };
+  
+  // Exception definitions
+  exception ClassificationException {
+    string reason;
+    long errorCode;
+  };
+  
+  exception SearchException {
+    string query;
+    string reason;
+  };
+  
+  exception TicketCreationException {
+    string reason;
+    long errorCode;
+  };
+  
+  exception EscalationException {
+    string ticketId;
+    string reason;
+  };
+  
+  exception TicketNotFoundException {
+    string ticketId;
+  };
+  
+}; // end module SupportSystem

@@ -294,7 +294,7 @@ export class DebugManager {
     workflowId: string,
     messageBus: MessageBus,
     workflowStateManager: WorkflowStateManager,
-    agents: Map<string, Agent>
+    _agents: Map<string, Agent>
   ): Promise<ReplayResult> {
     const messageLogs = this.getMessageLogs(workflowId);
     

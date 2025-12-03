@@ -4,7 +4,6 @@ import {
   RetryPolicy,
   BackoffStrategy,
   ErrorType,
-  isMessageObject,
   validateMessageObject
 } from '../types';
 
