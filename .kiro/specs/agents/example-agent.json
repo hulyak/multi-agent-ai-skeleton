@@ -1,0 +1,17 @@
+{
+  "id": "example-agent-001",
+  "name": "Example Agent",
+  "capabilities": [
+    "process-requests",
+    "validate-data",
+    "generate-responses"
+  ],
+  "messageTypes": [
+    "TASK_REQUEST",
+    "TASK_RESPONSE"
+  ],
+  "configuration": {
+    "maxConcurrentTasks": 5,
+    "timeout": 30000
+  }
+}

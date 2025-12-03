@@ -1,0 +1,313 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  
+  /* Enhanced spooky theme variables with WCAG AA contrast */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --accent-orange: #ff8c42;
+  --accent-purple: #9c4dcc;
+  --accent-green: #66bb6a;
+  --neon-accent: #d4e157;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #b0b0b0;
+  --border-subtle: #3a3a3a;
+  --border-accent: #5a5a5a;
+  
+  /* Font families */
+  --font-inter: var(--font-inter);
+  --font-space-grotesk: var(--font-space-grotesk);
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Spooky theme base styles */
+@layer base {
+  .spooky-theme {
+    @apply bg-spooky-bg-primary text-spooky-text-primary min-h-screen;
+    background-image: var(--tw-gradient-to), 
+                      repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(255,255,255,0.01) 100px, rgba(255,255,255,0.01) 200px);
+    position: relative;
+  }
+  
+  .spooky-theme::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(ellipse at 20% 30%, rgba(106, 27, 154, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(56, 142, 60, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .spooky-theme > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .spooky-theme h1,
+  .spooky-theme h2,
+  .spooky-theme h3,
+  .spooky-theme h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  
+  .spooky-theme h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    line-height: 1.1;
+  }
+  
+  .spooky-theme h2 {
+    @apply text-3xl md:text-4xl;
+    line-height: 1.2;
+  }
+  
+  .spooky-theme h3 {
+    @apply text-2xl md:text-3xl;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+  
+  .spooky-theme h4 {
+    @apply text-xl md:text-2xl;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  
+  .spooky-theme p {
+    @apply text-spooky-text-secondary;
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    font-weight: 400;
+  }
+  
+  .spooky-theme .text-lg {
+    line-height: 1.6;
+  }
+  
+  .spooky-theme .text-sm {
+    line-height: 1.5;
+  }
+  
+  .spooky-theme a {
+    @apply text-spooky-accent-purple hover:text-spooky-neon-accent transition-colors duration-200;
+  }
+}
+
+/* Spooky theme components */
+@layer components {
+  /* Cards with better contrast */
+  .spooky-card {
+    @apply bg-spooky-bg-secondary border-2 border-spooky-border-accent rounded-lg p-6;
+    @apply hover:border-spooky-accent-purple transition-all duration-300;
+    background-image: 
+      linear-gradient(rgba(26, 26, 26, 0.98), rgba(26, 26, 26, 0.98)),
+      repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.02) 10px, rgba(255,255,255,0.02) 20px);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.5),
+      0 2px 4px -1px rgba(0, 0, 0, 0.3),
+      inset 0 0 20px rgba(156, 77, 204, 0.08);
+  }
+  
+  .spooky-card:hover {
+    box-shadow: 
+      0 10px 15px -3px rgba(0, 0, 0, 0.6),
+      0 4px 6px -2px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(156, 77, 204, 0.3),
+      inset 0 0 30px rgba(156, 77, 204, 0.12);
+  }
+  
+  /* Neon glowing buttons */
+  .spooky-button {
+    @apply relative bg-transparent text-spooky-text-primary font-semibold px-6 py-3 rounded;
+    @apply transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-spooky-neon-accent focus:ring-offset-2 focus:ring-offset-spooky-bg-primary;
+    border: 2px solid transparent;
+    background-image: linear-gradient(var(--bg-secondary), var(--bg-secondary)), 
+                      linear-gradient(135deg, var(--accent-purple), var(--accent-green));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    clip-path: polygon(
+      0% 5px, 5px 0%, calc(100% - 5px) 0%, 100% 5px,
+      100% calc(100% - 5px), calc(100% - 5px) 100%, 5px 100%, 0% calc(100% - 5px)
+    );
+  }
+  
+  .spooky-button:hover {
+    animation: flicker 3s ease-in-out infinite;
+    box-shadow: 
+      0 0 10px rgba(106, 27, 154, 0.6),
+      0 0 20px rgba(56, 142, 60, 0.4),
+      inset 0 0 10px rgba(171, 188, 4, 0.2);
+  }
+  
+  .spooky-button-primary {
+    @apply spooky-button;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .spooky-button-cta {
+    @apply spooky-button;
+    @apply text-lg;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23abbc04" stroke-width="2"><circle cx="12" cy="12" r="10" opacity="0.3"/><path d="M12 2 L12 22 M2 12 L22 12"/></svg>'), auto;
+  }
+  
+  .spooky-button-cta:hover::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, 
+      rgba(171, 188, 4, 0.3), 
+      rgba(106, 27, 154, 0.3), 
+      rgba(56, 142, 60, 0.3));
+    filter: blur(8px);
+    z-index: -1;
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+  
+  /* Section styling */
+  .spooky-section {
+    @apply py-16 px-4 md:px-8 lg:px-16 relative;
+  }
+  
+  .spooky-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(106, 27, 154, 0.3) 20%, 
+      rgba(56, 142, 60, 0.3) 50%,
+      rgba(106, 27, 154, 0.3) 80%, 
+      transparent);
+  }
+  
+  /* Glow effects */
+  .spooky-glow-purple {
+    box-shadow: 0 0 20px rgba(106, 27, 154, 0.4);
+  }
+  
+  .spooky-glow-green {
+    box-shadow: 0 0 20px rgba(56, 142, 60, 0.4);
+  }
+  
+  .spooky-glow-neon {
+    box-shadow: 0 0 20px rgba(171, 188, 4, 0.5);
+  }
+  
+  /* Agent icons */
+  .spooky-icon-skull {
+    @apply inline-block w-6 h-6 relative;
+    filter: drop-shadow(0 0 4px rgba(171, 188, 4, 0.6));
+  }
+  
+  .spooky-icon-active {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+  
+  /* Workflow connection lines */
+  .spooky-workflow-line {
+    @apply relative;
+    background: linear-gradient(90deg, 
+      rgba(106, 27, 154, 0.3), 
+      rgba(56, 142, 60, 0.3));
+    height: 2px;
+  }
+  
+  .spooky-workflow-line.active {
+    animation: flicker 3s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(171, 188, 4, 0.6);
+  }
+  
+  /* Loading spinner */
+  .spooky-spinner {
+    @apply inline-block w-8 h-8 border-4 border-spooky-border-subtle rounded-full;
+    border-top-color: var(--neon-accent);
+    animation: spin-slow 3s linear infinite;
+    box-shadow: 0 0 15px rgba(171, 188, 4, 0.5);
+  }
+  
+  /* Floating bone fragments */
+  .spooky-float-bone {
+    @apply absolute opacity-10;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Foggy overlay */
+  .spooky-fog {
+    position: relative;
+  }
+  
+  .spooky-fog::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, 
+      rgba(106, 27, 154, 0.03) 0%, 
+      transparent 70%);
+    pointer-events: none;
+  }
+  
+  /* Table styling */
+  .spooky-table {
+    @apply w-full border-collapse;
+  }
+  
+  .spooky-table th {
+    @apply bg-spooky-bg-tertiary text-spooky-text-primary font-semibold p-4 border border-spooky-border-subtle;
+    font-family: var(--font-gothic);
+  }
+  
+  .spooky-table td {
+    @apply bg-spooky-bg-secondary text-spooky-text-secondary p-4 border border-spooky-border-subtle;
+  }
+  
+  .spooky-table tr:hover td {
+    @apply bg-spooky-bg-tertiary;
+    box-shadow: inset 0 0 20px rgba(106, 27, 154, 0.1);
+  }
+}
