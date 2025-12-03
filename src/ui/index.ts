@@ -49,6 +49,7 @@ export { AnatomicalSkeleton } from './AnatomicalSkeleton';
 export type { AnatomicalSkeletonProps, SkeletonAgent } from './AnatomicalSkeleton';
 
 export { MiniConjurations } from './MiniConjurations';
+export { IDLResurrection } from './IDLResurrection';
 export type { MiniConjurationsProps } from './MiniConjurations';
 
 // Scary Halloween Effects

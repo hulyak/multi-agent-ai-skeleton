@@ -1,0 +1,82 @@
+// CORBA IDL - RouterAgent Interface Definition (circa 1995)
+// This is what developers had to write in the "good old days"
+
+module AgentSystem {
+  
+  // Message structure for inter-agent communication
+  struct Message {
+    string messageId;
+    string senderId;
+    string receiverId;
+    string messageType;
+    string payload;
+    long timestamp;
+    long priority;
+  };
+  
+  // Agent status enumeration
+  enum AgentStatus {
+    IDLE,
+    PROCESSING,
+    WAITING,
+    ERROR,
+    TERMINATED
+  };
+  
+  // Agent metadata
+  struct AgentMetadata {
+    string agentId;
+    string agentName;
+    sequence<string> capabilities;
+    AgentStatus status;
+  };
+  
+  // Router Agent Interface
+  interface RouterAgent {
+    
+    // Route a message to the appropriate agent
+    // Returns: Target agent ID or empty string if routing fails
+    string routeMessage(in Message msg)
+      raises (RoutingException);
+    
+    // Register an agent with the router
+    void registerAgent(in AgentMetadata metadata)
+      raises (RegistrationException);
+    
+    // Deregister an agent from the router
+    void deregisterAgent(in string agentId)
+      raises (DeregistrationException);
+    
+    // Get list of all registered agents
+    sequence<AgentMetadata> listAgents();
+    
+    // Check if agent is available
+    boolean isAgentAvailable(in string agentId);
+    
+    // Get agent metadata by ID
+    AgentMetadata getAgentMetadata(in string agentId)
+      raises (AgentNotFoundException);
+  };
+  
+  // Exception definitions
+  exception RoutingException {
+    string reason;
+    long errorCode;
+  };
+  
+  exception RegistrationException {
+    string reason;
+    long errorCode;
+  };
+  
+  exception DeregistrationException {
+    string reason;
+    long errorCode;
+  };
+  
+  exception AgentNotFoundException {
+    string agentId;
+    string reason;
+  };
+  
+}; // end module AgentSystem

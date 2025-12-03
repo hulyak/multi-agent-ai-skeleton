@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 /**
- * Graveyard scene with tombstones and crosses
+ * Graveyard scene with tombstones
  */
 export const GraveyardScene: React.FC = () => {
   return (
@@ -35,16 +35,23 @@ export const GraveyardScene: React.FC = () => {
           </svg>
         </motion.div>
 
-        {/* Cross 1 */}
+        {/* Tombstone 4 */}
         <motion.div
           className="relative"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 0.6 }}
           transition={{ duration: 1, delay: 0.7 }}
         >
-          <svg width="50" height="90" viewBox="0 0 50 90">
-            <rect x="22" y="10" width="6" height="70" fill="rgba(42, 42, 42, 0.9)" stroke="rgba(171, 188, 4, 0.3)" strokeWidth="2" />
-            <rect x="10" y="25" width="30" height="6" fill="rgba(42, 42, 42, 0.9)" stroke="rgba(171, 188, 4, 0.3)" strokeWidth="2" />
+          <svg width="50" height="75" viewBox="0 0 50 75">
+            <path
+              d="M8 75 L8 20 Q8 8, 25 8 Q42 8, 42 20 L42 75 Z"
+              fill="rgba(42, 42, 42, 0.9)"
+              stroke="rgba(171, 188, 4, 0.3)"
+              strokeWidth="2"
+            />
+            <text x="25" y="40" textAnchor="middle" fill="rgba(171, 188, 4, 0.6)" fontSize="10" fontFamily="serif">
+              RIP
+            </text>
           </svg>
         </motion.div>
 
@@ -68,16 +75,17 @@ export const GraveyardScene: React.FC = () => {
           </svg>
         </motion.div>
 
-        {/* Cross 2 */}
+        {/* Tombstone 5 */}
         <motion.div
           className="relative"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 0.6 }}
           transition={{ duration: 1, delay: 1.1 }}
         >
-          <svg width="45" height="85" viewBox="0 0 45 85">
-            <rect x="20" y="8" width="5" height="65" fill="rgba(42, 42, 42, 0.9)" stroke="rgba(171, 188, 4, 0.3)" strokeWidth="2" />
-            <rect x="8" y="22" width="29" height="5" fill="rgba(42, 42, 42, 0.9)" stroke="rgba(171, 188, 4, 0.3)" strokeWidth="2" />
+          <svg width="55" height="80" viewBox="0 0 55 80">
+            <rect x="8" y="15" width="39" height="65" rx="3" fill="rgba(42, 42, 42, 0.9)" stroke="rgba(171, 188, 4, 0.3)" strokeWidth="2" />
+            <circle cx="27.5" y="8" r="7" fill="rgba(42, 42, 42, 0.9)" stroke="rgba(171, 188, 4, 0.3)" strokeWidth="2" />
+            <line x1="15" y1="40" x2="40" y2="40" stroke="rgba(171, 188, 4, 0.4)" strokeWidth="1" />
           </svg>
         </motion.div>
 
