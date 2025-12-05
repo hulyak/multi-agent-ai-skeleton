@@ -3,7 +3,6 @@
 > Resurrecting dead 1990s CORBA IDL as living AI agents
 
 [![Built for Kiroween 2025](https://img.shields.io/badge/Kiroween-2025-purple?style=for-the-badge&logo=ghost)](https://kiro.ai)
-[![Skeleton Crew](https://img.shields.io/badge/Category-Skeleton%20Crew-orange?style=for-the-badge)](https://kiro.ai)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
