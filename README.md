@@ -43,17 +43,21 @@
 - **Performance Monitoring**: Real-time metrics and bottleneck detection
 - **Debug Tools**: Event replay and troubleshooting capabilities
 
-### 🤖 Two Resurrected Applications
+### 🤖 Two Demo Applications
 
 **1. Customer Support System** (`/apps/support`)
 - Resurrected from `SupportAgent.idl`
 - Intent classification → FAQ search → Ticket creation → Escalation
 - Agents: IntentDetection, FAQ, Escalation
+- Uses keyword-based classification and local FAQ database
 
 **2. Research Assistant** (`/apps/research`)
 - Resurrected from `ResearchAgent.idl`
 - Document retrieval → Summarization → Citation generation
 - Agents: Retrieval, Summarization, Citation
+- Uses simulated document search and response generation
+
+**Note:** These are demonstration applications showing the multi-agent architecture. The agents use rule-based logic and mock data rather than external AI APIs, making the system fully self-contained and runnable without API keys
 
 ### 🎨 Spooky Halloween UI
 - **Resurrection Lab** (`/resurrection`) - Interactive IDL → YAML converter
@@ -104,8 +108,19 @@ crewos-corba-reborn/
 ├── .kiro/
 │   ├── specs/                    # Spec-driven development
 │   │   ├── idl-resurrection/     # Resurrection feature spec
-│   │   └── landing-page/         # Landing page spec
-│   └── steering/                 # Development guidelines
+│   │   ├── landing-page/         # Landing page spec
+│   │   └── multi-agent-skeleton/ # Multi-agent framework spec
+│   ├── steering/                 # Development guidelines
+│   │   ├── tech.md               # Technology stack & conventions
+│   │   ├── structure.md          # Project organization
+│   │   ├── product.md            # Product overview
+│   │   └── common-issues.md      # Lessons learned
+│   └── hooks/                    # Automated workflow hooks
+│       └── README.md             # 10 hooks saving 65 min/day
+├── corba-files/                  # Documentation & presentation
+│   ├── DEVPOST_WRITEUP.md        # Complete project writeup
+│   ├── VIDEO_SCRIPT.md           # Demo video script
+│   └── DEMO_SCRIPT.md            # Live demo script
 ├── demo/
 │   └── corba-idl/               # Example IDL files
 │       ├── RouterAgent.idl
@@ -113,7 +128,8 @@ crewos-corba-reborn/
 │       └── ResearchAgent.idl
 ├── src/
 │   ├── utils/
-│   │   └── idl-parser.ts        # CORBA IDL parser & converter
+│   │   ├── idl-parser.ts        # CORBA IDL parser & converter
+│   │   └── __tests__/           # Parser property tests
 │   ├── agents/                  # Agent implementations
 │   │   ├── Agent.ts             # Base agent class
 │   │   ├── IntentDetectionAgent.ts
@@ -121,7 +137,8 @@ crewos-corba-reborn/
 │   │   ├── EscalationAgent.ts
 │   │   ├── RetrievalAgent.ts
 │   │   ├── SummarizationAgent.ts
-│   │   └── CitationAgent.ts
+│   │   ├── CitationAgent.ts
+│   │   └── __tests__/           # Agent property tests
 │   ├── orchestration/           # CrewOS framework
 │   │   ├── MessageBus.ts
 │   │   ├── WorkflowStateManager.ts
@@ -129,20 +146,28 @@ crewos-corba-reborn/
 │   │   ├── ResourceAllocator.ts
 │   │   ├── AgentOrchestrator.ts
 │   │   ├── PerformanceMonitor.ts
-│   │   └── DebugManager.ts
-│   ├── ui/                      # Reusable UI components
+│   │   ├── DebugManager.ts
+│   │   └── __tests__/           # Framework property tests
+│   ├── ui/                      # Reusable UI components (30+)
 │   │   ├── IDLResurrection.tsx  # Resurrection UI
 │   │   ├── AnimatedHeroSection.tsx
 │   │   ├── SkeletonNetwork.tsx
-│   │   └── ... (30+ components)
+│   │   ├── SpookyFloatingBones.tsx
+│   │   ├── theme-tokens.ts      # Spooky theme tokens
+│   │   └── __tests__/           # UI tests
+│   ├── types/                   # TypeScript type definitions
+│   │   └── index.ts
 │   └── app/                     # Next.js App Router
 │       ├── page.tsx             # Landing page
 │       ├── resurrection/        # Resurrection Lab
 │       ├── apps/
-│       │   ├── support/         # Support Copilot
-│       │   └── research/        # Research Copilot
+│       │   ├── support/         # Support Copilot demo
+│       │   └── research/        # Research Copilot demo
 │       └── multi-agent-demo/    # Framework demo
-└── package.json
+├── package.json
+├── README.md
+├── TROUBLESHOOTING.md
+└── USAGE_EXAMPLES.md
 ```
 
 ---
@@ -333,22 +358,6 @@ Visit `/resurrection` to try the resurrection lab:
 
 ## 🏗️ Architecture
 
-### Two-Repo Structure
-
-**Repo 1: CrewOS Framework** (This repo)
-- Multi-agent orchestration skeleton
-- Message bus, state management, error handling
-- Base agent abstractions
-- Testing infrastructure
-
-**Repo 2: CORBA Resurrection** (Conceptual split)
-- IDL parser and converter
-- Resurrection UI
-- Type mapping logic
-- Spec validation
-
-This split demonstrates that the resurrection feature is a distinct capability built on top of the framework.
-
 ### Message Bus Pattern
 ```
 User Input → Agent 1 → Agent 2 → Agent 3 → Output
@@ -421,8 +430,6 @@ MIT License - feel free to resurrect your own legacy code!
 <div align="center">
 
 **Built with 💀 for Kiroween 2025**
-
-*Skeleton Crew Category*
 
 ⚰️ → ⚡ → ✨
 
