@@ -132,7 +132,7 @@ export default function SupportPage() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Enter your support question here..."
-                  className="w-full px-3 py-2 bg-white border-2 border-[#808080] font-mono text-sm text-black focus:outline-none focus:border-[#000080] resize-none"
+                  className="w-full px-3 py-2 bg-white border-2 border-[#808080] font-mono text-sm text-black focus:outline-none focus:border-[#000080] resize-none placeholder-gray-600"
                   rows={4}
                   disabled={isProcessing}
                 />
@@ -148,6 +148,29 @@ export default function SupportPage() {
                 </button>
               </div>
             </form>
+          </div>
+          
+          {/* Example Queries */}
+          <div className="bg-white border-4 border-[#808080] p-4 mb-4">
+            <p className="text-sm font-bold mb-3 text-[#008000]">💡 Try these example queries:</p>
+            <div className="grid md:grid-cols-2 gap-3">
+              {[
+                "I forgot my password and can't log into my account. How do I reset it?",
+                "I was charged twice for my subscription. Can you help me?",
+                "How do I update my payment method?",
+                "I'm getting an error when trying to upload files. What should I do?"
+              ].map((example, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setQuery(example);
+                  }}
+                  className="text-left px-3 py-2 bg-[#f0f0f0] border-2 border-[#808080] hover:bg-[#e0e0e0] text-sm text-black font-mono transition-colors"
+                >
+                  {example}
+                </button>
+              ))}
+            </div>
           </div>
           
           {/* Agent Workflow Info */}
@@ -247,7 +270,7 @@ export default function SupportPage() {
                       {item.citations.map((citation, idx) => (
                         <span
                           key={idx}
-                          className="text-sm px-3 py-1 bg-[#c0c0c0] border-2 border-[#808080] font-mono"
+                          className="text-sm px-3 py-1 bg-[#c0c0c0] border-2 border-[#808080] font-mono text-black"
                         >
                           📄 {citation}
                         </span>
@@ -278,7 +301,7 @@ export default function SupportPage() {
       </main>
       
       {/* Footer */}
-      <footer className="bg-white border-t-4 border-[#808080] p-4 text-center text-xs">
+      <footer className="bg-white border-t-4 border-[#808080] p-4 text-center text-xs text-black">
         <hr className="border-2 border-dashed border-black mb-4" />
         <p>
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ctext y='15' font-size='16'%3E🔥%3C/text%3E%3C/svg%3E" alt="fire" className="inline" />
@@ -287,9 +310,6 @@ export default function SupportPage() {
         </p>
         <p className="mt-2">
           Powered by CORBA 2.0 • IIOP Protocol • IDL Interfaces
-        </p>
-        <p className="mt-2 animate-pulse">
-          ⚠️ Under Construction ⚠️
         </p>
       </footer>
     </div>

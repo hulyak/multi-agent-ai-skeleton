@@ -305,7 +305,7 @@ export default function HybridPage() {
       {/* Standard footer */}
       <footer className="bg-white border-t">
         <div className="max-w-7xl mx-auto px-4 py-6">
-          <p className="text-gray-600">© 2024 My Application</p>
+          <p className="text-gray-600">© 2025 My Application</p>
         </div>
       </footer>
     </div>

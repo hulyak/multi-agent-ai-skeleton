@@ -287,9 +287,3 @@ If queries aren't working as expected:
 3. **Check citations**: Ensure citations are being generated
 4. **Monitor agent logs**: Check the CORBA ORB terminal for agent invocations
 5. **Test with examples**: Start with the provided examples before custom queries
-
----
-
-**Last Updated**: December 2024
-**System**: CrewOS: CORBA Reborn
-**Version**: 1.0.0

@@ -1026,7 +1026,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              Built with 💀 for Kiroween 2024 • Resurrection Category
+              Built with 💀 for Kiroween 2025 • Resurrection Category
             </motion.p>
           </motion.div>
         </div>

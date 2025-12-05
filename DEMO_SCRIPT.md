@@ -1,7 +1,26 @@
 # CrewOS: CORBA Reborn - Demo Script
 
-## Overview
-This demo showcases how CrewOS resurrects dead 1990s CORBA IDL files as modern AI agents. The demo takes ~5 minutes and covers the core features.
+## Executive Summary
+
+CrewOS resurrects 1990s CORBA IDL files as modern AI agents. The problem: organizations have decades of legacy CORBA systems in production with no easy way to modernize. We built an automated parser that converts verbose IDL to clean Kiro YAML specs.
+
+---
+
+## The Problem
+
+CORBA is still used in certain legacy systems across industries like telecom, aerospace, defense, and finance, where long-lived mission-critical applications continue to rely on it. The IDL files contain valuable domain knowledge but are verbose (100+ lines for simple interfaces). Modernizing means either rewriting from scratch or leaving it to rot. Manual conversion takes months and introduces bugs.
+
+---
+
+## Our Solutio
+
+Parse CORBA IDL automatically. Convert to Kiro agent specs (50 lines instead of 100+). Deploy as agents. Keep the domain logic, gain modern capabilities.
+
+**How We Used Kiro**
+- Spec-driven development with requirements, design, and tasks in `.kiro/specs/`
+- 19 correctness properties with 100+ iterations each
+- Steering files to keep architecture consistent
+- Task management to move from requirements to working code in days
 
 ---
 
@@ -56,7 +75,7 @@ This demo showcases how CrewOS resurrects dead 1990s CORBA IDL files as modern A
      - Highlight the dramatic simplification
      - Point out: agent name, methods, types, error handling
 
-4. **CrewOS Agents Section**
+4. **Resurrected Agents Section**
    - Show the agent cards (RouterAgent, etc.)
    - Click "Download YAML" to show the export functionality
    - Mention: "These specs are ready to use in Kiro projects"
@@ -149,30 +168,38 @@ npm test
 
 ## Key Talking Points
 
-### Problem Solved:
-- Organizations have decades of CORBA systems in production
-- Legacy IDL files represent valuable domain knowledge
-- No easy way to modernize without rewriting everything
-- CrewOS provides an automated path forward
+**The Problem**
+- CORBA still used in mission-critical systems (telecom, aerospace, defense, finance)
+- IDL files contain valuable domain knowledge
+- Manual modernization takes months
+- No automated path forward
 
-### Solution:
-- Parse legacy CORBA IDL automatically
-- Convert to modern Kiro agent specifications
-- Deploy as living AI agents
-- Maintain the original domain logic
+**The Solution**
+- Automated IDL parser
+- Converts to Kiro YAML specs
+- Deploy as agents
+- Preserve domain logic
 
-### Technical Highlights:
+**How We Built It**
+- Spec-driven development with Kiro
+- 19 correctness properties, 100+ iterations each
+- 65+ property-based tests
+- Steering files for consistency
+- Went from requirements to working demo in 2 weeks
+
+**What's Inside**
 - 8,000+ lines of framework code
-- 2,000+ lines of resurrection engine
+- 2,000+ lines of parser
 - 3,000+ lines of tests
-- 30+ reusable UI components
-- Property-based testing for correctness guarantees
+- 30+ UI components
+- Two working demo apps
 
-### Business Value:
+**Why It Matters**
 - Reduce modernization time from months to minutes
-- Preserve domain knowledge from legacy systems
-- Enable rapid AI agent deployment
-- Lower risk through automated conversion
+- Preserve domain knowledge
+- Enable rapid agent deployment
+- Lower risk through automation
+- Proven correctness
 
 ---
 

@@ -119,6 +119,11 @@ export const IDLResurrection: React.FC = () => {
             }
             const agentNames = result.specs.map(s => s.agent);
             
+            // Ensure we have valid data
+            if (agentNames.length === 0) {
+              throw new Error('No agents found in IDL file');
+            }
+            
             setState({
               status: 'complete',
               idlContent: content,
@@ -127,11 +132,12 @@ export const IDLResurrection: React.FC = () => {
             });
           } catch (error) {
             console.error('Resurrection failed:', error);
-            alert(`Error parsing IDL: ${error instanceof Error ? error.message : 'Unknown error'}`);
+            const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+            alert(`Error parsing IDL: ${errorMsg}`);
             setState({ status: 'idle', idlContent: '', yamlSpecs: [], agentNames: [] });
           }
-        }, 1500);
-      }, 1000);
+        }, 800);
+      }, 600);
     } catch (error) {
       console.error('File read failed:', error);
       setState({ status: 'idle', idlContent: '', yamlSpecs: [], agentNames: [] });
@@ -141,9 +147,12 @@ export const IDLResurrection: React.FC = () => {
   const loadDemoIDL = async (filename: string) => {
     try {
       const response = await fetch(`/demo/corba-idl/${filename}`);
+      if (!response.ok) {
+        throw new Error(`Failed to load demo: ${response.statusText}`);
+      }
       const content = await response.text();
       
-      setState({ ...state, status: 'parsing', idlContent: content });
+      setState({ status: 'parsing', idlContent: content, yamlSpecs: [], agentNames: [] });
       
       setTimeout(() => {
         setState(prev => ({ ...prev, status: 'converting' }));
@@ -156,6 +165,11 @@ export const IDLResurrection: React.FC = () => {
             }
             const agentNames = result.specs.map(s => s.agent);
             
+            // Ensure we have valid data
+            if (agentNames.length === 0) {
+              throw new Error('No agents found in IDL file');
+            }
+            
             setState({
               status: 'complete',
               idlContent: content,
@@ -164,13 +178,16 @@ export const IDLResurrection: React.FC = () => {
             });
           } catch (error) {
             console.error('Demo resurrection failed:', error);
-            alert(`Error parsing demo IDL: ${error instanceof Error ? error.message : 'Unknown error'}`);
+            const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+            console.error('Full error:', error);
+            alert(`Error parsing demo IDL: ${errorMsg}`);
             setState({ status: 'idle', idlContent: '', yamlSpecs: [], agentNames: [] });
           }
-        }, 1500);
-      }, 1000);
+        }, 800);
+      }, 600);
     } catch (error) {
       console.error('Failed to load demo:', error);
+      alert(`Failed to load demo file: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   };
 
@@ -426,17 +443,13 @@ export const IDLResurrection: React.FC = () => {
               <motion.div
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ 
-                  scale: [0, 1.2, 1],
-                  rotate: [- 180, 0, 0]
+                  scale: 1,
+                  rotate: 0
                 }}
                 transition={{ 
-                  type: 'spring', 
-                  duration: 0.8,
-                  bounce: 0.5,
-                  // Respect prefers-reduced-motion
-                  ...(typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches 
-                    ? { type: 'tween', duration: 0.3, bounce: 0 } 
-                    : {})
+                  type: 'tween',
+                  duration: 0.6,
+                  ease: 'easeOut'
                 }}
                 className="text-8xl mb-4"
               >
@@ -539,10 +552,10 @@ export const IDLResurrection: React.FC = () => {
               </div>
             </div>
 
-            {/* CrewOS Agents */}
+            {/* Resurrected Agents */}
             <div className="bg-spooky-bg-secondary/50 border border-spooky-border-subtle rounded-2xl p-6">
               <h4 className="text-xl font-bold text-spooky-text-primary mb-4">
-                CrewOS Agents
+                Resurrected Agents
               </h4>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {state.agentNames.map((name, idx) => (

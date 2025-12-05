@@ -2,7 +2,7 @@
 
 > Resurrecting dead 1990s CORBA IDL as living AI agents
 
-[![Built for Kiroween 2024](https://img.shields.io/badge/Kiroween-2024-purple?style=for-the-badge&logo=ghost)](https://kiro.ai)
+[![Built for Kiroween 2025](https://img.shields.io/badge/Kiroween-2024-purple?style=for-the-badge&logo=ghost)](https://kiro.ai)
 [![Skeleton Crew](https://img.shields.io/badge/Category-Skeleton%20Crew-orange?style=for-the-badge)](https://kiro.ai)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
@@ -13,7 +13,7 @@
 
 ## 💀 The Resurrection Story
 
-**The Graveyard:** Thousands of organizations have legacy CORBA systems with millions of lines of Interface Definition Language (IDL) gathering dust. These carefully-designed interfaces represent decades of domain knowledge - but they're trapped in obsolete technology.
+**The Graveyard:** Organizations in telecom, aerospace, defense, and finance still run CORBA systems in production. These mission-critical applications can't be easily rewritten—the risk is too high, the cost too great. Their CORBA IDL files represent decades of domain knowledge, but they're trapped in 1990s technology with no clear path to modernization.
 
 **The Resurrection:** CrewOS parses CORBA IDL files and converts them into modern Kiro agent specifications:
 - **100+ lines of verbose IDL** → **50 lines of concise YAML**
@@ -382,7 +382,6 @@ npm run lint
 npx tsc --noEmit
 ```
 
----
 
 ## 🎯 Kiro Spec-Driven Development
 
@@ -405,50 +404,10 @@ This project was built using Kiro's spec workflow:
 
 See `.kiro/specs/idl-resurrection/` for the complete spec.
 
----
-
-## 📚 Documentation
-
-- **[DEVPOST_WRITEUP.md](DEVPOST_WRITEUP.md)** - Complete project writeup for judges
-- **[TECHNICAL_WRITEUP.md](TECHNICAL_WRITEUP.md)** - Technical deep dive
-- **[USAGE_EXAMPLES.md](USAGE_EXAMPLES.md)** - Practical examples and code samples
-- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Common issues and solutions
-- **[src/ui/README.md](src/ui/README.md)** - UI component documentation
-
----
-
-## 🤝 Contributing
-
-This is a Kiroween 2024 submission for the Skeleton Crew category. Feel free to fork and adapt!
-
-### Adding New IDL Parsers
-1. Extend `parseIDL()` in `src/utils/idl-parser.ts`
-2. Add type mappings in `idlToKiroSpec()`
-3. Write property tests for new features
-4. Add demo IDL files to `demo/corba-idl/`
-
-### Adding New Agents
-1. Extend `BaseAgent` class
-2. Implement `processMessage()` method
-3. Register with message bus
-4. Write property tests
-
----
 
 ## 📝 License
 
 MIT License - feel free to resurrect your own legacy code!
-
----
-
-## 🎊 Acknowledgments
-
-- **Kiro AI** - For the amazing development platform and Kiroween challenge
-- **CORBA Community** - For the legacy that inspired this project
-- **Next.js Team** - For the excellent framework
-- **Framer Motion** - For smooth resurrection animations
-
----
 
 ## 🦇 Easter Eggs
 
@@ -458,21 +417,11 @@ MIT License - feel free to resurrect your own legacy code!
 - Crawling spiders on various pages
 - Flickering candlelight effects
 - Hidden CORBA jokes in console logs
-
----
-
-## 📞 Links
-
-- **Live Demo**: [Your deployment URL]
-- **DevPost**: [Your DevPost URL]
-- **Kiro AI**: [https://kiro.ai](https://kiro.ai)
-- **CORBA History**: [https://www.omg.org/corba/](https://www.omg.org/corba/)
-
 ---
 
 <div align="center">
 
-**Built with 💀 for Kiroween 2024**
+**Built with 💀 for Kiroween 2025**
 
 *Skeleton Crew Category*
 

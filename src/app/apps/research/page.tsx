@@ -129,7 +129,7 @@ export default function ResearchPage() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Enter your research topic here..."
-                  className="w-full px-3 py-2 bg-white border-2 border-[#808080] font-mono text-sm focus:outline-none focus:border-[#008000] resize-none"
+                  className="w-full px-3 py-2 bg-white text-black border-2 border-[#808080] font-mono text-sm focus:outline-none focus:border-[#008000] resize-none placeholder-gray-600"
                   rows={4}
                   disabled={isProcessing}
                 />
@@ -145,6 +145,29 @@ export default function ResearchPage() {
                 </button>
               </div>
             </form>
+          </div>
+          
+          {/* Example Queries */}
+          <div className="bg-white border-4 border-[#808080] p-4 mb-4">
+            <p className="text-sm font-bold mb-3 text-[#008000]">💡 Try these example queries:</p>
+            <div className="grid md:grid-cols-2 gap-3">
+              {[
+                "I need to find recent papers on machine learning applications in healthcare.",
+                "What are the latest developments in quantum computing?",
+                "Show me research on climate change mitigation strategies.",
+                "Find papers about distributed systems and microservices architecture."
+              ].map((example, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    setQuery(example);
+                  }}
+                  className="text-left px-3 py-2 bg-[#f0f0f0] border-2 border-[#808080] hover:bg-[#e0e0e0] text-sm text-black font-mono transition-colors"
+                >
+                  {example}
+                </button>
+              ))}
+            </div>
           </div>
           
           {/* Agent Workflow Info */}
@@ -194,7 +217,7 @@ export default function ResearchPage() {
                         {item.timestamp.toLocaleTimeString()}
                       </span>
                     </div>
-                    <div className="bg-[#f0f0f0] border-2 border-[#808080] p-3 font-mono text-sm">
+                    <div className="bg-[#f0f0f0] border-2 border-[#808080] p-3 font-mono text-sm text-black">
                       {item.query}
                     </div>
                   </div>
@@ -219,7 +242,7 @@ export default function ResearchPage() {
                       {item.documents.map((doc) => (
                         <div key={doc.id} className="bg-[#f0f0f0] border-2 border-[#808080] p-3">
                           <div className="flex items-start justify-between">
-                            <div className="font-mono text-sm">
+                            <div className="font-mono text-sm text-black">
                               <span className="text-[#0000ff] font-bold">[{doc.id}]</span> {doc.title}
                             </div>
                             <span className="text-xs bg-[#00ff00] text-black px-2 py-1 font-bold">
@@ -236,7 +259,7 @@ export default function ResearchPage() {
                     <h4 className="text-sm font-bold mb-2 text-[#008000]">
                       &gt;&gt; SUMMARY:
                     </h4>
-                    <div className="bg-[#f0f0f0] border-2 border-[#808080] p-3 font-mono text-sm">
+                    <div className="bg-[#f0f0f0] border-2 border-[#808080] p-3 font-mono text-sm text-black">
                       {item.summary}
                     </div>
                   </div>
@@ -250,7 +273,7 @@ export default function ResearchPage() {
                       {item.citations.map((citation, idx) => (
                         <div
                           key={idx}
-                          className="text-sm px-3 py-2 bg-[#c0c0c0] border-2 border-[#808080] font-mono"
+                          className="text-sm px-3 py-2 bg-[#c0c0c0] border-2 border-[#808080] font-mono text-black"
                         >
                           [{idx + 1}] {citation}
                         </div>
@@ -281,7 +304,7 @@ export default function ResearchPage() {
       </main>
       
       {/* Footer */}
-      <footer className="bg-white border-t-4 border-[#808080] p-4 text-center text-xs">
+      <footer className="bg-white border-t-4 border-[#808080] p-4 text-center text-xs text-black">
         <hr className="border-2 border-dashed border-black mb-4" />
         <p>
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ctext y='15' font-size='16'%3E🔥%3C/text%3E%3C/svg%3E" alt="fire" className="inline" />
@@ -290,9 +313,6 @@ export default function ResearchPage() {
         </p>
         <p className="mt-2">
           Powered by CORBA 2.0 • IIOP Protocol • IDL Interfaces
-        </p>
-        <p className="mt-2 animate-pulse">
-          ⚠️ Under Construction ⚠️
         </p>
       </footer>
     </div>
