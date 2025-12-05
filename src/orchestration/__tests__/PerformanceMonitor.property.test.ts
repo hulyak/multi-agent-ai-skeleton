@@ -1,4 +1,4 @@
-// Feature: multi-agent-skeleton, Property 17: Response time tracking
+// Feature: idl-resurrection, Property 17: Response time tracking
 // **Validates: Requirements 7.5**
 
 import fc from 'fast-check';

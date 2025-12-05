@@ -1,4 +1,4 @@
-// Feature: multi-agent-skeleton, Property 12: Debug mode comprehensive logging
+// Feature: idl-resurrection, Property 12: Debug mode comprehensive logging
 // Validates: Requirements 5.3
 
 import fc from 'fast-check';

@@ -40,7 +40,7 @@ function messageObjectArbitrary(): fc.Arbitrary<MessageObject> {
 // ============================================================================
 
 describe('MessageBus Routing Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 3: Message delivery and processing
+  // Feature: idl-resurrection, Property 3: Message delivery and processing
   describe('Property 3: Message delivery and processing', () => {
     it('should route valid messages to target agent and invoke handler', async () => {
       await fc.assert(

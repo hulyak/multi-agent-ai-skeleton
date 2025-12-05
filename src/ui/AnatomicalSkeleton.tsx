@@ -273,28 +273,7 @@ export const AnatomicalSkeleton: React.FC<AnatomicalSkeletonProps> = ({
           );
         })}
       </svg>
-      
-      {/* Tooltip */}
-      {hoveredAgent && (
-        <motion.div
-          className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-4 z-50"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-        >
-          <div className="bg-spooky-bg-tertiary border-2 border-spooky-neon-accent rounded-lg p-4 shadow-2xl max-w-xs">
-            <h4 className="text-lg font-bold text-spooky-neon-accent mb-2">
-              {agents.find(a => a.id === hoveredAgent)?.name}
-            </h4>
-            <p className="text-sm text-spooky-text-secondary">
-              {agents.find(a => a.id === hoveredAgent)?.description}
-            </p>
-            <p className="text-xs text-spooky-text-muted mt-2">
-              Click to learn more
-            </p>
-          </div>
-        </motion.div>
-      )}
+
     </div>
   );
 };

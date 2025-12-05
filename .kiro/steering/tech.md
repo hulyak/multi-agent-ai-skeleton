@@ -48,10 +48,25 @@ npm run lint             # Run ESLint
 - Custom theme tokens in `tailwind.config.ts`
 - Spooky theme with custom colors, animations, and keyframes
 - UI components in `src/ui/` with theme tokens exported from `theme-tokens.ts`
+- Framer Motion for smooth animations and transitions
+
+## IDL Parsing
+
+- **Parser**: Regex-based CORBA IDL parser in `src/utils/idl-parser.ts`
+- **Type Mapping**: CORBA types → TypeScript equivalents
+  - `string` → `string`
+  - `long`, `short`, `double`, `float` → `number`
+  - `boolean` → `boolean`
+  - `sequence<T>` → `T[]`
+  - `void` → `void`
+- **Output Format**: Kiro YAML specifications
+- **Error Handling**: Graceful degradation with structured error messages
+- **Testing**: 65+ tests covering parsing, conversion, and edge cases
 
 ## Dependencies
 
-- **Runtime**: next, react, react-dom
+- **Runtime**: next, react, react-dom, framer-motion (animations)
 - **Dev**: TypeScript, Jest, fast-check, ESLint, Tailwind, ts-jest
 - **Testing**: @testing-library/react, @testing-library/jest-dom
 - **Utilities**: chokidar (file watching for SpecLoader)
+- **Parsing**: Built-in regex-based IDL parser (no external dependencies)

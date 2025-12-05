@@ -54,7 +54,7 @@ function retryPolicyArbitrary(): fc.Arbitrary<RetryPolicy> {
 // ============================================================================
 
 describe('ErrorHandler Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 6: Error logging with context
+  // Feature: idl-resurrection, Property 6: Error logging with context
   describe('Property 6: Error logging with context', () => {
     it('should log all task failures with error message, stack trace, and context', async () => {
       await fc.assert(
@@ -188,7 +188,7 @@ describe('ErrorHandler Property Tests', () => {
     });
   });
 
-  // Feature: multi-agent-skeleton, Property 7: Retry policy compliance
+  // Feature: idl-resurrection, Property 7: Retry policy compliance
   describe('Property 7: Retry policy compliance', () => {
     it('should apply retry policy with correct backoff strategy and max retries', async () => {
       await fc.assert(
@@ -263,7 +263,7 @@ describe('ErrorHandler Property Tests', () => {
     });
   });
 
-  // Feature: multi-agent-skeleton, Property 8: Failure propagation to dependents
+  // Feature: idl-resurrection, Property 8: Failure propagation to dependents
   describe('Property 8: Failure propagation to dependents', () => {
     it('should notify all dependent agents when a critical agent fails', async () => {
       await fc.assert(

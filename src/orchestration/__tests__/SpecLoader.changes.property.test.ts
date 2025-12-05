@@ -1,5 +1,5 @@
 // Property-Based Tests for Spec Change Detection
-// Feature: multi-agent-skeleton, Property 9: Spec change detection and regeneration
+// Feature: idl-resurrection, Property 9: Spec change detection and regeneration
 
 import fc from 'fast-check';
 import { SpecLoader, SpecChangeEvent } from '../SpecLoader';

@@ -1,5 +1,5 @@
 // Property-Based Tests for Retrieval Agent
-// Feature: multi-agent-skeleton, Property 20: Document retrieval and state persistence
+// Feature: idl-resurrection, Property 20: Document retrieval and state persistence
 // Validates: Requirements 9.1, 9.2
 
 import fc from 'fast-check';
@@ -80,7 +80,7 @@ function retrievalMessageArbitrary(): fc.Arbitrary<MessageObject> {
 // ============================================================================
 
 describe('RetrievalAgent Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 20: Document retrieval and state persistence
+  // Feature: idl-resurrection, Property 20: Document retrieval and state persistence
   describe('Property 20: Document retrieval and state persistence', () => {
     it('should search indexed documents and return relevant documents for any research topic', async () => {
       await fc.assert(

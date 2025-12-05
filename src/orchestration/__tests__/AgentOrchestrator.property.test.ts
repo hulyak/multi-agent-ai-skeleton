@@ -63,7 +63,7 @@ function agentSpecArbitrary(): fc.Arbitrary<{
 // ============================================================================
 
 describe('AgentOrchestrator Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 1: Agent initialization completeness
+  // Feature: idl-resurrection, Property 1: Agent initialization completeness
   describe('Property 1: Agent initialization completeness', () => {
     it('should fully initialize all agents from valid specs', async () => {
       await fc.assert(
@@ -196,7 +196,7 @@ describe('AgentOrchestrator Property Tests', () => {
     });
   });
 
-  // Feature: multi-agent-skeleton, Property 24: Dynamic agent scaling
+  // Feature: idl-resurrection, Property 24: Dynamic agent scaling
   describe('Property 24: Dynamic agent scaling', () => {
     it('should support registration and deregistration at runtime', async () => {
       await fc.assert(

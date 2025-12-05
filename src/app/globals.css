@@ -310,4 +310,22 @@ body {
     @apply bg-spooky-bg-tertiary;
     box-shadow: inset 0 0 20px rgba(106, 27, 154, 0.1);
   }
+  
+  /* Screen reader only - Accessibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  /* Focus visible styles for keyboard navigation */
+  .focus-visible:focus {
+    @apply outline-none ring-2 ring-spooky-neon-accent ring-offset-2 ring-offset-spooky-bg-primary;
+  }
 }

@@ -15,8 +15,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Multi-Agent AI Skeleton",
-  description: "Modular multi-agent AI orchestration system",
+  title: "CrewOS: CORBA Reborn",
+  description: "Resurrect legacy CORBA IDL as modern AI agents",
 };
 
 export default function RootLayout({

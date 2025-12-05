@@ -67,7 +67,7 @@ export default function RetroCORBADemo() {
               🌐 CORBA Multi-Agent System 🌐
             </h1>
             <p className="text-sm">
-              <blink className="animate-pulse">*** Powered by CORBA 2.0 ***</blink>
+              <span className="animate-pulse">*** Powered by CORBA 2.0 ***</span>
             </p>
             <div className="flex justify-center gap-4 mt-4">
               <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='31'%3E%3Crect fill='%23000' width='88' height='31'/%3E%3Ctext x='44' y='20' fill='%23fff' font-family='monospace' font-size='12' text-anchor='middle'%3ENetscape%3C/text%3E%3C/svg%3E" alt="Netscape Now" />

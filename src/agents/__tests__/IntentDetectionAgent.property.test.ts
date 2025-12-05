@@ -1,5 +1,5 @@
 // Property-Based Tests for Intent Detection Agent
-// Feature: multi-agent-skeleton, Property 14: Intent classification and routing
+// Feature: idl-resurrection, Property 14: Intent classification and routing
 // Validates: Requirements 6.2, 6.3
 
 import fc from 'fast-check';
@@ -79,7 +79,7 @@ function intentDetectionMessageArbitrary(): fc.Arbitrary<MessageObject> {
 // ============================================================================
 
 describe('IntentDetectionAgent Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 14: Intent classification and routing
+  // Feature: idl-resurrection, Property 14: Intent classification and routing
   describe('Property 14: Intent classification and routing', () => {
     it('should classify intent and route to appropriate handler for any user query', async () => {
       await fc.assert(

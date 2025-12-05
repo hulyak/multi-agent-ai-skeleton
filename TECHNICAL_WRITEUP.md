@@ -922,7 +922,7 @@ The system uses property-based testing to verify correctness across wide input r
 
 import fc from 'fast-check';
 
-// Feature: multi-agent-skeleton, Property 3: Message delivery and processing
+// Feature: idl-resurrection, Property 3: Message delivery and processing
 describe('Property 3: Message delivery', () => {
   it('should process messages idempotently', async () => {
     await fc.assert(

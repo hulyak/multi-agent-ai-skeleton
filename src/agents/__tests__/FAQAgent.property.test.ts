@@ -1,5 +1,5 @@
 // Property-Based Tests for FAQ Agent
-// Feature: multi-agent-skeleton, Property 15: FAQ pattern matching and response
+// Feature: idl-resurrection, Property 15: FAQ pattern matching and response
 // Validates: Requirements 6.4
 
 import fc from 'fast-check';
@@ -113,7 +113,7 @@ function faqMessageArbitrary(): fc.Arbitrary<MessageObject> {
 // ============================================================================
 
 describe('FAQAgent Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 15: FAQ pattern matching and response
+  // Feature: idl-resurrection, Property 15: FAQ pattern matching and response
   describe('Property 15: FAQ pattern matching and response', () => {
     it('should generate and return a response for any query that matches FAQ patterns', async () => {
       await fc.assert(

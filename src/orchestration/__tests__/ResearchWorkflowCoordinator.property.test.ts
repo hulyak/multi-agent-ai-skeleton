@@ -1,6 +1,6 @@
 // Property-Based Tests for Research Workflow Coordinator
-// Feature: multi-agent-skeleton, Property 18: Research workflow sequential execution
-// Feature: multi-agent-skeleton, Property 19: Research report formatting
+// Feature: idl-resurrection, Property 18: Research workflow sequential execution
+// Feature: idl-resurrection, Property 19: Research report formatting
 // Validates: Requirements 8.1, 8.2, 8.3, 8.4, 8.5
 
 import fc from 'fast-check';
@@ -47,7 +47,7 @@ function citationStyleArbitrary(): fc.Arbitrary<CitationStyle> {
 // ============================================================================
 
 describe('ResearchWorkflowCoordinator Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 18: Research workflow sequential execution
+  // Feature: idl-resurrection, Property 18: Research workflow sequential execution
   describe('Property 18: Research workflow sequential execution', () => {
     it('should trigger agents in sequence: Retrieval → Summarization → Citation', async () => {
       await fc.assert(
@@ -273,7 +273,7 @@ describe('ResearchWorkflowCoordinator Property Tests', () => {
     });
   });
 
-  // Feature: multi-agent-skeleton, Property 19: Research report formatting
+  // Feature: idl-resurrection, Property 19: Research report formatting
   describe('Property 19: Research report formatting', () => {
     it('should format report in rich-text with citation links', async () => {
       await fc.assert(

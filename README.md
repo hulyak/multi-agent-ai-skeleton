@@ -1,64 +1,73 @@
-# 🎃 Multi-Agent AI Skeleton
+# 🧟‍♂️ CrewOS: CORBA Reborn
 
-> Resurrecting the lost art of multi-agent systems with modern AI orchestration
+> Resurrecting dead 1990s CORBA IDL as living AI agents
 
 [![Built for Kiroween 2024](https://img.shields.io/badge/Kiroween-2024-purple?style=for-the-badge&logo=ghost)](https://kiro.ai)
-[![Resurrection](https://img.shields.io/badge/Category-Resurrection-orange?style=for-the-badge)](https://kiro.ai)
+[![Skeleton Crew](https://img.shields.io/badge/Category-Skeleton%20Crew-orange?style=for-the-badge)](https://kiro.ai)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
-A production-ready, modular foundation for building multi-agent AI orchestration systems. Features event-driven architecture, comprehensive testing, and a delightfully spooky Halloween-themed UI.
+**CrewOS** is a multi-agent orchestration framework that brings dead CORBA IDL files back to life as modern AI agents. Upload legacy interface definitions from the 1990s and watch them transform into concise Kiro specifications ready to power living agent systems.
 
 ---
 
 ## 💀 The Resurrection Story
 
-**Dead Technology:** Multi-agent systems from the 1990s-2000s - complex, brittle, and abandoned for simpler monolithic approaches.
+**The Graveyard:** Thousands of organizations have legacy CORBA systems with millions of lines of Interface Definition Language (IDL) gathering dust. These carefully-designed interfaces represent decades of domain knowledge - but they're trapped in obsolete technology.
 
-**Brought Back to Life:** Modern AI orchestration with:
-- Event-driven message passing (replacing rigid RPC)
-- Shared state management (replacing distributed databases)
-- Property-based testing (replacing fragile unit tests)
-- TypeScript strict mode (replacing loose contracts)
-- Real-time monitoring (replacing blind execution)
+**The Resurrection:** CrewOS parses CORBA IDL files and converts them into modern Kiro agent specifications:
+- **100+ lines of verbose IDL** → **50 lines of concise YAML**
+- **1990s distributed objects** → **Modern AI agents**
+- **Rigid RPC calls** → **Event-driven message passing**
 
-**Solving Tomorrow's Problems:** As AI systems grow more complex, we need coordinated agents that can:
-- Specialize in specific tasks
-- Communicate asynchronously
-- Recover from failures gracefully
-- Scale independently
-- Maintain context across workflows
+**The Magic:** Watch the transformation happen in real-time with our spooky resurrection UI:
+1. ⚰️ Upload dead CORBA IDL
+2. ⚡ Parse and convert to Kiro specs
+3. ✨ Spawn living AI agents
 
 ---
 
 ## ✨ Features
 
-### 🦴 Core Skeleton Runtime
+### 🧟 CORBA Resurrection Engine
+- **IDL Parser**: Extracts interfaces, methods, structs, and exceptions from CORBA syntax
+- **Spec Converter**: Maps IDL to Kiro YAML format with TypeScript type equivalents
+- **Type Mapper**: Converts CORBA types (string, long, sequence) to modern types
+- **Validator**: Ensures generated specs are correct and complete
+- **Download**: Export generated Kiro specs for use in your projects
+
+### 🦴 CrewOS Multi-Agent Framework
 - **Event-Driven Architecture**: Message bus with pub/sub pattern
-- **Shared State Management**: Centralized workflow and agent state
+- **Workflow State Management**: Centralized state tracking across agents
 - **Error Handling**: Robust retry mechanisms and failure recovery
-- **Resource Allocation**: Fair scheduling and starvation prevention
+- **Resource Allocation**: Fair scheduling prevents agent starvation
 - **Performance Monitoring**: Real-time metrics and bottleneck detection
 - **Debug Tools**: Event replay and troubleshooting capabilities
 
-### 🎨 Spooky UI Components
-- **Animated Hero Section**: Flickering candlelight glow, floating skulls, drifting ghosts
-- **Neon Pulse Buttons**: Glowing buttons with skeletal finger pointers
-- **Cute Skull Spinner**: Adorable loading animation with glowing eyes
-- **Flying Bats**: Easter egg animations across the screen
-- **Interactive Skeleton Network**: Blinking skull nodes with pulsing connections
-- **Agent Status Badges**: Floating ghost wisps with color transitions
-- **Haunted Background**: Moving fog, flickering shadows, eerie atmosphere
+### 🤖 Two Resurrected Applications
 
-### 🤖 Demo Applications
-1. **Support Copilot** (`/apps/support`) - AI-powered helpdesk with intelligent routing
-2. **Research Copilot** (`/apps/research`) - Document retrieval and summarization assistant
+**1. Customer Support System** (`/apps/support`)
+- Resurrected from `SupportAgent.idl`
+- Intent classification → FAQ search → Ticket creation → Escalation
+- Agents: IntentDetection, FAQ, Escalation
+
+**2. Research Assistant** (`/apps/research`)
+- Resurrected from `ResearchAgent.idl`
+- Document retrieval → Summarization → Citation generation
+- Agents: Retrieval, Summarization, Citation
+
+### 🎨 Spooky Halloween UI
+- **Resurrection Lab** (`/resurrection`) - Interactive IDL → YAML converter
+- **Animated Transitions**: Parsing → Converting → Complete with visual feedback
+- **Before/After Comparison**: See the dramatic line count reduction
+- **Three Demo Examples**: RouterAgent, SupportAgent, ResearchAgent
+- **Download Functionality**: Export generated specs as YAML files
 
 ### ♿ Accessibility First
-- WCAG AA compliant color contrast (4.5:1+ ratios)
-- Respects `prefers-reduced-motion` preferences
-- Full keyboard navigation support
-- Screen reader friendly with proper ARIA labels
+- WCAG AA compliant (4.5:1+ contrast ratios)
+- Respects `prefers-reduced-motion`
+- Full keyboard navigation
+- Screen reader friendly with ARIA labels
 
 ---
 
@@ -73,7 +82,7 @@ A production-ready, modular foundation for building multi-agent AI orchestration
 ```bash
 # Clone the repository
 git clone <your-repo-url>
-cd multi-agent-ai-skeleton
+cd crewos-corba-reborn
 
 # Install dependencies
 npm install
@@ -82,92 +91,173 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the magic! ✨
+Open [http://localhost:3000](http://localhost:3000) to see the landing page, then visit:
+- **`/resurrection`** - Try the CORBA Resurrection Lab
+- **`/apps/support`** - See the resurrected Support system
+- **`/apps/research`** - See the resurrected Research assistant
 
 ---
 
 ## 📁 Project Structure
 
 ```
-multi-agent-ai-skeleton/
+crewos-corba-reborn/
 ├── .kiro/
-│   ├── specs/              # Spec-driven development
-│   │   ├── multi-agent-skeleton/
-│   │   └── landing-page/
-│   └── steering/           # Steering files for consistency
-│       ├── product.md
-│       ├── structure.md
-│       └── tech.md
+│   ├── specs/                    # Spec-driven development
+│   │   ├── idl-resurrection/     # Resurrection feature spec
+│   │   └── landing-page/         # Landing page spec
+│   └── steering/                 # Development guidelines
+├── demo/
+│   └── corba-idl/               # Example IDL files
+│       ├── RouterAgent.idl
+│       ├── SupportAgent.idl
+│       └── ResearchAgent.idl
 ├── src/
-│   ├── agents/             # Agent implementations
-│   │   ├── Agent.ts        # Base agent class
+│   ├── utils/
+│   │   └── idl-parser.ts        # CORBA IDL parser & converter
+│   ├── agents/                  # Agent implementations
+│   │   ├── Agent.ts             # Base agent class
 │   │   ├── IntentDetectionAgent.ts
 │   │   ├── FAQAgent.ts
 │   │   ├── EscalationAgent.ts
 │   │   ├── RetrievalAgent.ts
 │   │   ├── SummarizationAgent.ts
 │   │   └── CitationAgent.ts
-│   ├── orchestration/      # Core skeleton runtime
+│   ├── orchestration/           # CrewOS framework
 │   │   ├── MessageBus.ts
 │   │   ├── WorkflowStateManager.ts
 │   │   ├── ErrorHandler.ts
 │   │   ├── ResourceAllocator.ts
 │   │   ├── AgentOrchestrator.ts
 │   │   ├── PerformanceMonitor.ts
-│   │   ├── DebugManager.ts
-│   │   └── SpecLoader.ts
-│   ├── types/              # TypeScript type definitions
-│   ├── ui/                 # Reusable UI components
+│   │   └── DebugManager.ts
+│   ├── ui/                      # Reusable UI components
+│   │   ├── IDLResurrection.tsx  # Resurrection UI
 │   │   ├── AnimatedHeroSection.tsx
-│   │   ├── NeonPulseButton.tsx
-│   │   ├── CuteSkullSpinner.tsx
-│   │   ├── FlyingBats.tsx
 │   │   ├── SkeletonNetwork.tsx
-│   │   └── ... (20+ components)
-│   └── app/                # Next.js App Router
-│       ├── page.tsx        # Landing page
+│   │   └── ... (30+ components)
+│   └── app/                     # Next.js App Router
+│       ├── page.tsx             # Landing page
+│       ├── resurrection/        # Resurrection Lab
 │       ├── apps/
-│       │   ├── support/    # Support Copilot
-│       │   └── research/   # Research Copilot
-│       └── multi-agent-demo/
-├── package.json
-└── README.md
+│       │   ├── support/         # Support Copilot
+│       │   └── research/        # Research Copilot
+│       └── multi-agent-demo/    # Framework demo
+└── package.json
 ```
+
+---
+
+## 🧟 How CORBA Resurrection Works
+
+### 1. Upload Dead IDL
+Drop a CORBA IDL file from the 1990s:
+
+```idl
+// CORBA IDL - SupportAgent.idl (circa 1995)
+module SupportSystem {
+  struct CustomerInquiry {
+    string inquiryId;
+    string customerId;
+    string subject;
+    string description;
+    long priority;
+  };
+  
+  interface SupportAgent {
+    IntentResult classifyIntent(in CustomerInquiry inquiry)
+      raises (ClassificationException);
+    
+    sequence<FAQEntry> searchFAQ(in string query, in long maxResults)
+      raises (SearchException);
+  };
+};
+```
+
+### 2. Parse & Convert
+Our resurrection engine:
+- Extracts module, interfaces, methods, structs, exceptions
+- Maps CORBA types to TypeScript equivalents
+- Categorizes parameters as inputs/outputs
+- Generates Kiro YAML specifications
+
+### 3. Living Kiro YAML
+Get concise, modern agent specs:
+
+```yaml
+# Resurrected from CORBA IDL
+# Module: SupportSystem
+
+agent: SupportAgent
+module: SupportSystem
+
+inputs:
+  - name: customerinquiry
+    type: CustomerInquiry
+  - name: string
+    type: string
+
+methods:
+  - name: classifyIntent
+    params:
+      - name: inquiry
+        type: CustomerInquiry
+    returns: IntentResult
+    errors:
+      - ClassificationException
+      
+  - name: searchFAQ
+    params:
+      - name: query
+        type: string
+      - name: maxResults
+        type: long
+    returns: sequence<FAQEntry>
+    errors:
+      - SearchException
+
+types:
+  - name: CustomerInquiry
+    fields:
+      - name: inquiryId
+        type: string
+      - name: customerId
+        type: string
+      - name: subject
+        type: string
+      - name: description
+        type: string
+      - name: priority
+        type: long
+```
+
+### 4. Spawn Agents
+Use the generated specs to create working agents in the CrewOS framework!
 
 ---
 
 ## 🎯 Use Cases
 
-### 1. Support Copilot
-**Route**: `/apps/support`
+### Legacy Modernization
+Organizations with CORBA systems can:
+- Extract interface definitions from legacy code
+- Generate modern agent specifications
+- Gradually migrate to AI-powered systems
+- Preserve decades of domain knowledge
 
-Multi-agent helpdesk system featuring:
-- Intent detection and query classification
-- FAQ matching from knowledge base
-- Intelligent escalation handling
-- Citation tracking for responses
+### Rapid Prototyping
+Developers can:
+- Start with well-defined interfaces
+- Generate agent skeletons automatically
+- Focus on implementation, not boilerplate
+- Iterate quickly with spec-driven development
 
-**Agents**: IntentDetection → FAQ → ResponseGen → Citation
-
-### 2. Research Copilot
-**Route**: `/apps/research`
-
-Research assistant with:
-- Document retrieval from repositories
-- Relevance scoring and ranking
-- Content summarization
-- Citation management
-
-**Agents**: Retrieval → Ranking → Summarization → Citation
-
-### 3. Multi-Agent Dashboard
-**Route**: `/multi-agent-demo`
-
-Interactive demonstration featuring:
-- Three-panel layout (agents, details, console)
-- Real-time workflow visualization
-- Agent status monitoring
-- Live console logging
+### Educational
+Students can:
+- Learn about distributed systems evolution
+- Compare 1990s vs modern architectures
+- Understand interface design principles
+- See real-world legacy code transformation
 
 ---
 
@@ -181,7 +271,7 @@ Interactive demonstration featuring:
 | **Styling** | Tailwind CSS 3.4+ |
 | **Animations** | Framer Motion |
 | **Testing** | Jest 29 + fast-check (PBT) |
-| **Linting** | ESLint with Next.js config |
+| **Parsing** | Regex-based IDL parser |
 
 ---
 
@@ -194,122 +284,83 @@ npm test
 
 # Run tests in watch mode
 npm run test:watch
-
-# Run with coverage
-npm test -- --coverage
 ```
 
 ### Property-Based Testing
-This project uses **fast-check** for property-based testing to ensure correctness across a wide range of inputs.
+We use **fast-check** for property-based testing with 100+ iterations per test:
 
-Example test locations:
+**Resurrection Engine Tests:**
+- Module extraction completeness
+- Interface parsing accuracy
+- Type mapping correctness
+- YAML round-trip validity
+- Error handling resilience
+
+**Framework Tests:**
+- Message routing properties
+- State management invariants
+- Resource allocation fairness
+- Error propagation correctness
+
+Test locations:
+- `src/utils/__tests__/idl-parser.property.test.ts`
 - `src/orchestration/__tests__/*.property.test.ts`
 - `src/agents/__tests__/*.property.test.ts`
-- `src/types/__tests__/*.property.test.ts`
 
 ---
 
-## 🎨 UI Components
+## 🎨 Resurrection UI
 
-### Core Components
+### Interactive Demo
+Visit `/resurrection` to try the resurrection lab:
 
-#### Animated Hero Section
-```tsx
-import { AnimatedHeroSection } from '@/ui';
+1. **Upload IDL** - Choose a file or select a demo
+2. **Watch Animation** - See parsing → converting → complete
+3. **Compare Results** - Before/after side-by-side view
+4. **Download Specs** - Export generated YAML files
 
-<AnimatedHeroSection
-  title="Your Title"
-  subtitle="Your subtitle"
->
-  <YourCTAButtons />
-</AnimatedHeroSection>
-```
+### Visual Feedback
+- ⚰️ **Idle**: Upload area with coffin emoji
+- 💀 **Parsing**: Spinning skull with terminal output
+- ⚡ **Converting**: Lightning bolt with progress
+- ✨ **Complete**: Success celebration with agent list
 
-#### Neon Pulse Button
-```tsx
-import { NeonPulseButton } from '@/ui';
-
-<NeonPulseButton 
-  variant="purple" 
-  size="lg"
-  onClick={handleClick}
->
-  Click Me
-</NeonPulseButton>
-```
-
-#### Cute Skull Spinner
-```tsx
-import { CuteSkullSpinner } from '@/ui';
-
-{isLoading && <CuteSkullSpinner size="md" />}
-```
-
-### Full Component List
-See [MOTION_DESIGN_COMPONENTS.md](MOTION_DESIGN_COMPONENTS.md) for complete documentation.
-
----
-
-## 🎃 Spooky Theme
-
-### Color Palette (WCAG AA Compliant)
-
-| Color | Hex | Usage | Contrast |
-|-------|-----|-------|----------|
-| Pure Black | `#0a0a0a` | Primary background | - |
-| Dark Gray | `#1a1a1a` | Secondary background | - |
-| White | `#ffffff` | Primary text | 21:1 ✅ |
-| Light Gray | `#e0e0e0` | Secondary text | 15.3:1 ✅ |
-| Purple | `#9c4dcc` | Accent | 5.2:1 ✅ |
-| Green | `#66bb6a` | Accent | 4.9:1 ✅ |
-| Orange | `#ff8c42` | Accent | 4.8:1 ✅ |
-| Neon | `#d4e157` | Accent | 12.1:1 ✅ |
-
-### Animations
-- **Fast** (< 300ms): Button clicks, hover effects
-- **Medium** (300ms - 1s): Transitions, fade effects
-- **Slow** (1s - 3s): Glow pulses, breathing effects
-- **Background** (> 3s): Floating particles, drifting ghosts
-
----
-
-## 📚 Documentation
-
-- **[MOTION_DESIGN_COMPONENTS.md](MOTION_DESIGN_COMPONENTS.md)** - Complete UI component guide
-- **[ACCESSIBILITY_IMPROVEMENTS.md](ACCESSIBILITY_IMPROVEMENTS.md)** - Accessibility details
-- **[KIROWEEN_PROJECT_COMPLETE.md](KIROWEEN_PROJECT_COMPLETE.md)** - Project overview
-- **[FINAL_KIROWEEN_SUMMARY.md](FINAL_KIROWEEN_SUMMARY.md)** - Complete feature summary
-
-### Component Documentation
-- [UI Components](src/ui/README.md)
-- [Agents](src/agents/README.md)
-- [Orchestration](src/orchestration/README.md)
-- [API](src/api/README.md)
+### Demo Examples
+- **RouterAgent.idl** - Message routing system
+- **SupportAgent.idl** - Customer support system
+- **ResearchAgent.idl** - Research assistant system
 
 ---
 
 ## 🏗️ Architecture
 
+### Two-Repo Structure
+
+**Repo 1: CrewOS Framework** (This repo)
+- Multi-agent orchestration skeleton
+- Message bus, state management, error handling
+- Base agent abstractions
+- Testing infrastructure
+
+**Repo 2: CORBA Resurrection** (Conceptual split)
+- IDL parser and converter
+- Resurrection UI
+- Type mapping logic
+- Spec validation
+
+This split demonstrates that the resurrection feature is a distinct capability built on top of the framework.
+
 ### Message Bus Pattern
 ```
-User Input → Intent Agent → FAQ Agent → Response Agent → Citation Agent → Output
-                ↓              ↓            ↓              ↓
-            Message Bus ← → Shared State ← → Error Handler
+User Input → Agent 1 → Agent 2 → Agent 3 → Output
+                ↓         ↓         ↓
+            Message Bus ← → Shared State
 ```
 
-### Agent Lifecycle
-1. **Initialize**: Agent registers with message bus
-2. **Subscribe**: Agent subscribes to relevant topics
-3. **Process**: Agent receives and processes messages
-4. **Publish**: Agent publishes results to message bus
-5. **Update**: Agent updates shared state
-
-### State Management
-- Centralized workflow state
-- Agent context tracking
-- Conversation history
-- Task coordination
-- State persistence
+### Resurrection Pipeline
+```
+IDL File → Parser → Converter → Validator → YAML Spec → Agent
+```
 
 ---
 
@@ -318,6 +369,7 @@ User Input → Intent Agent → FAQ Agent → Response Agent → Citation Agent 
 ### Build for Production
 ```bash
 npm run build
+npm start
 ```
 
 ### Lint Code
@@ -332,59 +384,69 @@ npx tsc --noEmit
 
 ---
 
-## 🎯 Kiro Features
+## 🎯 Kiro Spec-Driven Development
 
-### Specs
-Formal requirements and design documents guide implementation:
-- Requirements with EARS-compliant acceptance criteria
-- Design documents with correctness properties
-- Task lists with property-based test tasks
+This project was built using Kiro's spec workflow:
 
-### Steering
-Context and instructions ensure consistency:
-- Product overview and features
-- Directory structure and conventions
-- Technology stack and commands
+### 1. Requirements Phase
+- Defined user stories with EARS-compliant acceptance criteria
+- Identified 8 requirements with 40 acceptance criteria
+- Covered parsing, conversion, validation, UI, and downloads
 
-### Hooks
-Event-driven automation triggers:
-- Test execution on file save
-- Type generation on spec changes
-- Validation hooks
+### 2. Design Phase
+- Created architecture with component interfaces
+- Defined 19 correctness properties for testing
+- Planned error handling and validation strategies
 
-### MCP
-Model Context Protocol integration:
-- External tool access
-- Extended agent capabilities
-- API integrations
+### 3. Implementation Phase
+- Built incrementally with property tests
+- Validated each component against properties
+- Iterated based on test feedback
+
+See `.kiro/specs/idl-resurrection/` for the complete spec.
+
+---
+
+## 📚 Documentation
+
+- **[DEVPOST_WRITEUP.md](DEVPOST_WRITEUP.md)** - Complete project writeup for judges
+- **[TECHNICAL_WRITEUP.md](TECHNICAL_WRITEUP.md)** - Technical deep dive
+- **[USAGE_EXAMPLES.md](USAGE_EXAMPLES.md)** - Practical examples and code samples
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Common issues and solutions
+- **[src/ui/README.md](src/ui/README.md)** - UI component documentation
 
 ---
 
 ## 🤝 Contributing
 
-This is a Kiroween 2024 submission for the Resurrection category. Feel free to fork and adapt for your own multi-agent projects!
+This is a Kiroween 2024 submission for the Skeleton Crew category. Feel free to fork and adapt!
 
-### Development Workflow
-1. Create feature specs in `.kiro/specs/`
-2. Write requirements with acceptance criteria
-3. Design with correctness properties
-4. Implement with property-based tests
-5. Iterate and refine
+### Adding New IDL Parsers
+1. Extend `parseIDL()` in `src/utils/idl-parser.ts`
+2. Add type mappings in `idlToKiroSpec()`
+3. Write property tests for new features
+4. Add demo IDL files to `demo/corba-idl/`
+
+### Adding New Agents
+1. Extend `BaseAgent` class
+2. Implement `processMessage()` method
+3. Register with message bus
+4. Write property tests
 
 ---
 
 ## 📝 License
 
-MIT License - feel free to use this skeleton for your own projects!
+MIT License - feel free to resurrect your own legacy code!
 
 ---
 
 ## 🎊 Acknowledgments
 
-- **Kiro AI** - For the amazing development platform
-- **Kiroween 2024** - For the spooky inspiration
+- **Kiro AI** - For the amazing development platform and Kiroween challenge
+- **CORBA Community** - For the legacy that inspired this project
 - **Next.js Team** - For the excellent framework
-- **Framer Motion** - For smooth animations
+- **Framer Motion** - For smooth resurrection animations
 
 ---
 
@@ -395,15 +457,16 @@ MIT License - feel free to use this skeleton for your own projects!
 - Floating skull particles on hero section
 - Crawling spiders on various pages
 - Flickering candlelight effects
+- Hidden CORBA jokes in console logs
 
 ---
 
 ## 📞 Links
 
 - **Live Demo**: [Your deployment URL]
-- **Documentation**: See docs folder
-- **Issues**: [Your issues URL]
+- **DevPost**: [Your DevPost URL]
 - **Kiro AI**: [https://kiro.ai](https://kiro.ai)
+- **CORBA History**: [https://www.omg.org/corba/](https://www.omg.org/corba/)
 
 ---
 
@@ -411,7 +474,11 @@ MIT License - feel free to use this skeleton for your own projects!
 
 **Built with 💀 for Kiroween 2024**
 
-*Resurrection Category*
+*Skeleton Crew Category*
+
+⚰️ → ⚡ → ✨
+
+**From the graveyard of enterprise software, we bring forth the future of AI agents.**
 
 🎃 👻 💀 🦇 🕷️ 🕸️
 

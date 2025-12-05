@@ -8,7 +8,8 @@ src/
 ├── orchestration/   # Core orchestration framework
 ├── types/          # TypeScript type definitions
 ├── api/            # API documentation
-├── ui/             # Reusable UI components
+├── ui/             # Reusable UI components (30+ spooky-themed components)
+├── utils/          # Utility functions (IDL parser, YAML generator)
 └── app/            # Next.js App Router (pages & API routes)
 ```
 
@@ -37,16 +38,35 @@ Centralized type definitions:
 - Error types, retry policies
 - Domain-specific types (Intent, FAQEntry, Citation, Document)
 
+### `src/utils/`
+Utility functions and parsers:
+- **idl-parser.ts**: CORBA IDL parser and Kiro spec converter
+  - `parseIDL()`: Extracts interfaces, methods, structs, exceptions from IDL
+  - `idlToKiroSpec()`: Converts parsed IDL to Kiro YAML format
+  - `specToYAML()`: Generates formatted YAML output
+  - `mapCorbaType()`: Maps CORBA types to TypeScript equivalents
+- Tests: `__tests__/idl-parser.test.ts`, `__tests__/yaml-generator.test.ts`
+
 ### `src/ui/`
 Reusable React components with Tailwind styling:
-- Spooky-themed components (SpookyCard, SpookyButton, SpookyIcon, etc.)
-- Workflow visualizations (WorkflowAnimation, ArchitectureDiagram)
-- Agent monitoring (AgentConsole, AgentStatusSidebar)
+- **Spooky-themed components**: SpookyCard, SpookyButton, SpookyIcon, SpookyTable, SpookySpinner, etc.
+- **Halloween effects**: HauntedGhost, FlyingBats, CrawlingSpider, BloodDrip, CreepyEyes, FlickeringLantern
+- **Skeleton components**: AnatomicalSkeleton, SkeletonNetwork, SkeletonCursor, SpookyFloatingBones
+- **Workflow visualizations**: WorkflowAnimation, ArchitectureDiagram, SpookyWorkflowLine
+- **Agent monitoring**: AgentConsole, AgentStatusSidebar
+- **IDL Resurrection**: IDLResurrection component for CORBA → Kiro conversion
+- **Landing page**: AnimatedHeroSection, GraveyardScene, HauntedBackground, MiniConjurations
 - Theme tokens exported from `theme-tokens.ts`
 
 ### `src/app/`
 Next.js App Router structure:
-- **Pages**: `/`, `/multi-agent-demo`, `/support`, `/research`, `/spooky-demo`
+- **Pages**: 
+  - `/` - Landing page with hero section and demos
+  - `/resurrection` - IDL Resurrection Lab (interactive CORBA → Kiro converter)
+  - `/retro-corba` - Retro CORBA interface demo
+  - `/multi-agent-demo` - Multi-agent orchestration demo
+  - `/apps/support` - Customer Support Bot demo
+  - `/apps/research` - Research Assistant demo
 - **API Routes**: `/api/message`, `/api/agent/[agentId]`, `/api/state/[workflowId]`, `/api/metrics`
 - `layout.tsx`: Root layout with global styles
 - `globals.css`: Global CSS and Tailwind directives

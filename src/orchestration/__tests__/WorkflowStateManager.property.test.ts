@@ -34,7 +34,7 @@ function taskDataArbitrary(): fc.Arbitrary<Omit<Task, 'id' | 'createdAt' | 'chil
 // ============================================================================
 
 describe('WorkflowStateManager Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 4: Task delegation creates child tasks
+  // Feature: idl-resurrection, Property 4: Task delegation creates child tasks
   describe('Property 4: Task delegation creates child tasks', () => {
     it('should create child task with parent-child relationship when agent delegates', async () => {
       await fc.assert(
@@ -207,7 +207,7 @@ describe('WorkflowStateManager Property Tests', () => {
     });
   });
 
-  // Feature: multi-agent-skeleton, Property 11: Workflow and agent state API availability
+  // Feature: idl-resurrection, Property 11: Workflow and agent state API availability
   describe('Property 11: Workflow and agent state API availability', () => {
     it('should provide API to retrieve current workflow state snapshots', async () => {
       await fc.assert(

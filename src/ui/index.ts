@@ -1,7 +1,7 @@
 /**
  * Spooky UI Theme Components
  * 
- * A collection of reusable Halloween-themed UI components for the Multi-Agent Skeleton project.
+ * A collection of reusable Halloween-themed UI components for CrewOS: CORBA Reborn.
  * These components provide a consistent spooky aesthetic while maintaining accessibility and UX.
  */
 

@@ -1,5 +1,5 @@
 // Property-Based Tests for Summarization Agent
-// Feature: multi-agent-skeleton, Property 21: Document summarization
+// Feature: idl-resurrection, Property 21: Document summarization
 // Validates: Requirements 9.3
 
 import fc from 'fast-check';
@@ -72,7 +72,7 @@ function summarizationConfigArbitrary(): fc.Arbitrary<SummarizationConfig> {
 // ============================================================================
 
 describe('SummarizationAgent Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 21: Document summarization
+  // Feature: idl-resurrection, Property 21: Document summarization
   describe('Property 21: Document summarization', () => {
     it('should produce a condensed summary for any retrieved document', async () => {
       await fc.assert(

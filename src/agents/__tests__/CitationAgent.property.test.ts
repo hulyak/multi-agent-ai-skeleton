@@ -1,5 +1,5 @@
 // Property-Based Tests for Citation Agent
-// Feature: multi-agent-skeleton, Property 22: Citation extraction and formatting
+// Feature: idl-resurrection, Property 22: Citation extraction and formatting
 // Validates: Requirements 9.4, 9.5
 
 import fc from 'fast-check';
@@ -80,7 +80,7 @@ function citationMessageArbitrary(): fc.Arbitrary<MessageObject> {
 // ============================================================================
 
 describe('CitationAgent Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 22: Citation extraction and formatting
+  // Feature: idl-resurrection, Property 22: Citation extraction and formatting
   describe('Property 22: Citation extraction and formatting', () => {
     it('should extract citations from any document containing citation information', async () => {
       await fc.assert(
@@ -167,8 +167,9 @@ describe('CitationAgent Property Tests', () => {
               expect(fc.formatted.length).toBeGreaterThan(0);
               expect(typeof fc.isValid).toBe('boolean');
 
-              // Verify formatted citation contains the title
-              expect(fc.formatted).toContain(fc.citation.title);
+              // Verify formatted citation contains the title (or "Untitled" if title is empty)
+              const effectiveTitle = fc.citation.title.trim() || 'Untitled';
+              expect(fc.formatted).toContain(effectiveTitle);
 
               // Verify formatted citation ends with punctuation
               expect(fc.formatted).toMatch(/[.!?]$/);
@@ -192,15 +193,17 @@ describe('CitationAgent Property Tests', () => {
                 case CitationStyle.MLA:
                   // MLA uses commas to separate elements
                   expect(fc.formatted).toContain(',');
-                  // Title should be in quotes
-                  expect(fc.formatted).toContain(`"${fc.citation.title}"`);
+                  // Title should be in quotes (use effective title)
+                  const mlaTitleEffective = fc.citation.title.trim() || 'Untitled';
+                  expect(fc.formatted).toContain(`"${mlaTitleEffective}"`);
                   break;
 
                 case CitationStyle.CHICAGO:
                   // Chicago uses periods to separate elements
                   expect(fc.formatted).toContain('.');
-                  // Title should be italicized (represented with underscores)
-                  expect(fc.formatted).toContain(`_${fc.citation.title}_`);
+                  // Title should be italicized (represented with underscores) (use effective title)
+                  const chicagoTitleEffective = fc.citation.title.trim() || 'Untitled';
+                  expect(fc.formatted).toContain(`_${chicagoTitleEffective}_`);
                   break;
               }
             });
@@ -295,9 +298,10 @@ describe('CitationAgent Property Tests', () => {
             expect(citations.length).toBe(documents.length);
             expect(formattedCitations.length).toBe(documents.length);
 
-            // Each formatted citation should still contain the title
+            // Each formatted citation should still contain the title (or "Untitled" if empty)
             formattedCitations.forEach((fc: FormattedCitation, index: number) => {
-              expect(fc.formatted).toContain(documents[index].title);
+              const effectiveTitle = documents[index].title.trim() || 'Untitled';
+              expect(fc.formatted).toContain(effectiveTitle);
             });
           }
         ),
@@ -415,7 +419,8 @@ describe('CitationAgent Property Tests', () => {
               expect(resultStyle).toBe(style);
               expect(formattedCitations.length).toBe(1);
               expect(formattedCitations[0].style).toBe(style);
-              expect(formattedCitations[0].formatted).toContain(document.title);
+              const effectiveTitle = document.title.trim() || 'Untitled';
+              expect(formattedCitations[0].formatted).toContain(effectiveTitle);
             }
           }
         ),

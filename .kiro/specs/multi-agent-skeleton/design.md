@@ -595,7 +595,7 @@ Property-based tests verify universal properties hold across all inputs using ra
 
 **Property Test Requirements**:
 - Each property test MUST be tagged with a comment referencing the design document property
-- Tag format: `// Feature: multi-agent-skeleton, Property {number}: {property_text}`
+- Tag format: `// Feature: idl-resurrection, Property {number}: {property_text}`
 - Each correctness property MUST be implemented by a SINGLE property-based test
 - Tests MUST run at least 100 iterations to ensure statistical coverage
 
@@ -603,7 +603,7 @@ Property-based tests verify universal properties hold across all inputs using ra
 ```typescript
 import fc from 'fast-check';
 
-// Feature: multi-agent-skeleton, Property 1: Agent initialization completeness
+// Feature: idl-resurrection, Property 1: Agent initialization completeness
 describe('Property 1: Agent initialization completeness', () => {
   it('should fully initialize all agents from valid specs', async () => {
     await fc.assert(

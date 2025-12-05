@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   SpookyFloatingBones,
@@ -19,7 +18,7 @@ import {
 
 export default function Home() {
   return (
-    <main className="landing-page spooky-theme relative" role="main" aria-label="Resurrected Agents Landing Page">
+    <main className="landing-page spooky-theme relative" role="main" aria-label="CrewOS: CORBA Reborn Landing Page">
       {/* Haunted Background Effects */}
       <HauntedBackground />
       <GraveyardScene />
@@ -90,7 +89,7 @@ export default function Home() {
               className="text-5xl md:text-6xl lg:text-7xl font-bold relative font-display tracking-tight"
             >
               <span className="bg-gradient-to-r from-spooky-accent-purple via-spooky-neon-accent to-spooky-accent-green bg-clip-text text-transparent">
-                Resurrected Agents
+                CrewOS Agents
               </span>
             </h1>
             
@@ -207,56 +206,6 @@ export default function Home() {
               </p>
             </motion.article>
           </div>
-        </div>
-      </section>
-
-      {/* CORBA Agent Network Visualization */}
-      <section 
-        className="py-20 px-6 relative z-10"
-        aria-labelledby="network-heading"
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.h2 
-            id="network-heading"
-            className="text-4xl md:text-5xl font-bold text-center mb-6 text-spooky-text-primary"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            The Agent Network
-          </motion.h2>
-          
-          <motion.p 
-            className="text-center text-spooky-text-secondary mb-12 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Distributed CORBA agents connected via message bus, resurrected as modern Kiro specs
-          </motion.p>
-          
-          <motion.div
-            className="bg-spooky-bg-secondary border border-spooky-border-subtle rounded-lg p-8 relative overflow-hidden"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-          >
-            <div className="relative w-full max-w-4xl mx-auto">
-              <Image 
-                src="/skeleton.png" 
-                alt="CORBA Agent Network - Distributed agents connected via message bus"
-                width={1200}
-                height={800}
-                className="w-full h-auto"
-                priority
-              />
-            </div>
-            
-            {/* Background glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-spooky-accent-purple/5 via-transparent to-spooky-accent-green/5 pointer-events-none" />
-          </motion.div>
         </div>
       </section>
 
@@ -543,6 +492,79 @@ module SupportSystem {
               Built with 💀 for Kiroween 2024 • Resurrection Category
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Navigation to All Pages */}
+      <section 
+        className="py-20 px-6 relative z-10 bg-spooky-bg-secondary/50 border-t border-spooky-border-subtle"
+        aria-labelledby="nav-heading"
+      >
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <h2 
+              id="nav-heading"
+              className="text-3xl md:text-4xl font-bold mb-4 text-spooky-text-primary"
+            >
+              Explore All Pages
+            </h2>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-4">
+            {/* Main Demos */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <Link href="/apps/support">
+                <button className="w-full px-6 py-3 bg-spooky-accent-purple hover:bg-spooky-accent-purple/90 text-white rounded-lg font-medium transition-all duration-200 hover:scale-105 text-sm">
+                  💀 Support Agent
+                </button>
+              </Link>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.05 }}
+            >
+              <Link href="/apps/research">
+                <button className="w-full px-6 py-3 bg-spooky-accent-green hover:bg-spooky-accent-green/90 text-white rounded-lg font-medium transition-all duration-200 hover:scale-105 text-sm">
+                  👻 Research Agent
+                </button>
+              </Link>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <Link href="/resurrection">
+                <button className="w-full px-6 py-3 bg-spooky-neon-accent hover:bg-spooky-neon-accent/90 text-black rounded-lg font-medium transition-all duration-200 hover:scale-105 text-sm">
+                  ⚡ Resurrection Lab
+                </button>
+              </Link>
+            </motion.div>
+          </div>
+          
+          <motion.p 
+            className="text-center text-xs text-spooky-text-muted mt-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+          >
+            Start with the Resurrection Lab to convert CORBA IDL to Kiro specs.
+          </motion.p>
         </div>
       </section>
     </main>

@@ -52,7 +52,7 @@ function retryPolicyArbitrary(): fc.Arbitrary<RetryPolicy> {
 // ============================================================================
 
 describe('MessageBus Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 5: Message delivery retry exhaustion
+  // Feature: idl-resurrection, Property 5: Message delivery retry exhaustion
   describe('Property 5: Message delivery retry exhaustion', () => {
     it('should retry delivery exactly maxRetries times before logging failure', async () => {
       await fc.assert(

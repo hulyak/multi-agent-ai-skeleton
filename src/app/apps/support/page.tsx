@@ -132,7 +132,7 @@ export default function SupportPage() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Enter your support question here..."
-                  className="w-full px-3 py-2 bg-white border-2 border-[#808080] font-mono text-sm focus:outline-none focus:border-[#000080] resize-none"
+                  className="w-full px-3 py-2 bg-white border-2 border-[#808080] font-mono text-sm text-black focus:outline-none focus:border-[#000080] resize-none"
                   rows={4}
                   disabled={isProcessing}
                 />
@@ -197,7 +197,7 @@ export default function SupportPage() {
                         {item.timestamp.toLocaleTimeString()}
                       </span>
                     </div>
-                    <div className="bg-[#f0f0f0] border-2 border-[#808080] p-3 font-mono text-sm">
+                    <div className="bg-[#f0f0f0] border-2 border-[#808080] p-3 font-mono text-sm text-black">
                       {item.query}
                     </div>
                   </div>
@@ -233,7 +233,7 @@ export default function SupportPage() {
                     <h4 className="text-sm font-bold mb-2 text-[#008000]">
                       &gt;&gt; AGENT RESPONSE:
                     </h4>
-                    <div className="bg-[#f0f0f0] border-2 border-[#808080] p-3 font-mono text-sm">
+                    <div className="bg-[#f0f0f0] border-2 border-[#808080] p-3 font-mono text-sm text-black">
                       {item.response}
                     </div>
                   </div>

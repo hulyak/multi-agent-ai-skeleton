@@ -66,8 +66,8 @@ export function parseIDL(idlContent: string): IDLInterface[] {
   const moduleMatch = cleaned.match(/module\s+(\w+)\s*\{/);
   const moduleName = moduleMatch ? moduleMatch[1] : 'Unknown';
   
-  // Extract structs
-  const structs: IDLStruct[] = [];
+  // Extract structs - deduplicate by name
+  const structMap = new Map<string, IDLStruct>();
   const structRegex = /struct\s+(\w+)\s*\{([^}]+)\}/g;
   let structMatch;
   while ((structMatch = structRegex.exec(cleaned)) !== null) {
@@ -76,16 +76,21 @@ export function parseIDL(idlContent: string): IDLInterface[] {
     const fields = structBody
       .split(';')
       .map(f => f.trim())
-      .filter(f => f)
+      .filter(f => f && f.length > 0)
       .map(f => {
         const parts = f.trim().split(/\s+/);
-        return { type: parts[0], name: parts[1] };
-      });
-    structs.push({ name: structName, fields });
+        if (parts.length >= 2) {
+          return { type: parts[0], name: parts[1] };
+        }
+        return null;
+      })
+      .filter((f): f is { type: string; name: string } => f !== null);
+    structMap.set(structName, { name: structName, fields });
   }
+  const structs = Array.from(structMap.values());
   
-  // Extract exceptions
-  const exceptions: IDLException[] = [];
+  // Extract exceptions - deduplicate by name
+  const exceptionMap = new Map<string, IDLException>();
   const exceptionRegex = /exception\s+(\w+)\s*\{([^}]+)\}/g;
   let exceptionMatch;
   while ((exceptionMatch = exceptionRegex.exec(cleaned)) !== null) {
@@ -94,13 +99,18 @@ export function parseIDL(idlContent: string): IDLInterface[] {
     const fields = exceptionBody
       .split(';')
       .map(f => f.trim())
-      .filter(f => f)
+      .filter(f => f && f.length > 0)
       .map(f => {
         const parts = f.trim().split(/\s+/);
-        return { type: parts[0], name: parts[1] };
-      });
-    exceptions.push({ name: exceptionName, fields });
+        if (parts.length >= 2) {
+          return { type: parts[0], name: parts[1] };
+        }
+        return null;
+      })
+      .filter((f): f is { type: string; name: string } => f !== null);
+    exceptionMap.set(exceptionName, { name: exceptionName, fields });
   }
+  const exceptions = Array.from(exceptionMap.values());
   
   // Extract interfaces
   const interfaceRegex = /interface\s+(\w+)\s*\{([^}]+)\}/g;
@@ -111,7 +121,8 @@ export function parseIDL(idlContent: string): IDLInterface[] {
     
     // Parse methods
     const methods: IDLMethod[] = [];
-    const methodRegex = /(\w+)\s+(\w+)\s*\(([^)]*)\)(?:\s*raises\s*\(([^)]+)\))?/g;
+    // Updated regex to handle complex types including sequence<T>
+    const methodRegex = /([\w<>]+)\s+(\w+)\s*\(([^)]*)\)(?:\s*raises\s*\(([^)]+)\))?/g;
     let methodMatch;
     while ((methodMatch = methodRegex.exec(interfaceBody)) !== null) {
       const returnType = methodMatch[1];
@@ -119,17 +130,38 @@ export function parseIDL(idlContent: string): IDLInterface[] {
       const paramsStr = methodMatch[3];
       const raisesStr = methodMatch[4];
       
-      // Parse parameters
+      // Parse parameters - handle complex types like sequence<T>
       const parameters: IDLParameter[] = [];
       if (paramsStr.trim()) {
-        const paramParts = paramsStr.split(',');
+        // Split by comma, but be careful with angle brackets
+        const paramParts: string[] = [];
+        let current = '';
+        let depth = 0;
+        
+        for (let i = 0; i < paramsStr.length; i++) {
+          const char = paramsStr[i];
+          if (char === '<') depth++;
+          if (char === '>') depth--;
+          if (char === ',' && depth === 0) {
+            paramParts.push(current.trim());
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+        if (current.trim()) {
+          paramParts.push(current.trim());
+        }
+        
         for (const param of paramParts) {
-          const parts = param.trim().split(/\s+/);
-          if (parts.length >= 3) {
+          // Match: direction type name
+          // Handle types with angle brackets like sequence<double>
+          const paramMatch = param.trim().match(/^(in|out|inout)\s+([\w<>]+)\s+(\w+)$/);
+          if (paramMatch) {
             parameters.push({
-              direction: parts[0] as 'in' | 'out' | 'inout',
-              type: parts[1],
-              name: parts[2]
+              direction: paramMatch[1] as 'in' | 'out' | 'inout',
+              type: paramMatch[2],
+              name: paramMatch[3]
             });
           }
         }
@@ -162,99 +194,284 @@ export function parseIDL(idlContent: string): IDLInterface[] {
 }
 
 /**
+ * Map CORBA types to TypeScript types
+ * Requirements: 8.1, 8.2, 8.3, 8.4, 8.5
+ */
+export function mapCorbaType(corbaType: string): string {
+  // Handle sequence types (e.g., "sequence<string>" -> "string[]")
+  const sequenceMatch = corbaType.match(/sequence<(.+)>/);
+  if (sequenceMatch) {
+    const innerType = mapCorbaType(sequenceMatch[1].trim());
+    return `${innerType}[]`;
+  }
+  
+  // Map primitive CORBA types to TypeScript types
+  const typeMap: Record<string, string> = {
+    // Requirement 8.1: string -> string
+    'string': 'string',
+    
+    // Requirement 8.2: long -> number
+    'long': 'number',
+    'short': 'number',
+    'unsigned long': 'number',
+    'unsigned short': 'number',
+    'long long': 'number',
+    'unsigned long long': 'number',
+    
+    // Requirement 8.3: boolean -> boolean
+    'boolean': 'boolean',
+    
+    // Requirement 8.5: double -> number
+    'double': 'number',
+    'float': 'number',
+    
+    // Additional common types
+    'void': 'void',
+    'char': 'string',
+    'wchar': 'string',
+    'octet': 'number',
+    'any': 'any',
+  };
+  
+  // Return mapped type or original type (for custom types like structs)
+  return typeMap[corbaType.toLowerCase()] || corbaType;
+}
+
+/**
  * Convert IDL interface to Kiro YAML spec
+ * Requirements: 2.1, 2.2, 2.3, 2.4
  */
 export function idlToKiroSpec(idlInterface: IDLInterface): KiroSpec {
   // Collect all input/output types from methods
   const inputs = new Set<string>();
   const outputs = new Set<string>();
   
+  // Requirement 2.2: Categorize parameters by direction
   idlInterface.methods.forEach(method => {
     method.parameters.forEach(param => {
+      const mappedType = mapCorbaType(param.type);
       if (param.direction === 'in' || param.direction === 'inout') {
-        inputs.add(param.type);
+        inputs.add(mappedType);
       }
       if (param.direction === 'out' || param.direction === 'inout') {
-        outputs.add(param.type);
+        outputs.add(mappedType);
       }
     });
+    // Add return types to outputs (except void)
     if (method.returnType !== 'void') {
-      outputs.add(method.returnType);
+      const mappedReturnType = mapCorbaType(method.returnType);
+      outputs.add(mappedReturnType);
     }
   });
   
+  // Requirement 2.1: Agent name matches interface name
+  // Requirement 2.3: Preserve all method components
+  // Requirement 2.4: Include struct definitions
   return {
     agent: idlInterface.name,
     module: idlInterface.module,
-    inputs: Array.from(inputs).map(type => ({ name: type.toLowerCase(), type })),
-    outputs: Array.from(outputs).map(type => ({ name: type.toLowerCase(), type })),
+    inputs: Array.from(inputs).map(type => ({ 
+      name: type.toLowerCase().replace('[]', 'Array'), 
+      type 
+    })),
+    outputs: Array.from(outputs).map(type => ({ 
+      name: type.toLowerCase().replace('[]', 'Array'), 
+      type 
+    })),
     methods: idlInterface.methods.map(method => ({
       name: method.name,
-      params: method.parameters.map(p => ({ name: p.name, type: p.type })),
-      returns: method.returnType,
+      params: method.parameters.map(p => ({ 
+        name: p.name, 
+        type: mapCorbaType(p.type) 
+      })),
+      returns: mapCorbaType(method.returnType),
       errors: method.raises
     })),
     types: idlInterface.structs.map(struct => ({
       name: struct.name,
-      fields: struct.fields
+      fields: struct.fields.map(field => ({
+        name: field.name,
+        type: mapCorbaType(field.type)
+      }))
     }))
   };
 }
 
 /**
- * Convert Kiro spec to YAML string
+ * Escape special YAML characters in strings
+ * Requirements: 2.5
+ */
+function escapeYAMLString(str: string): string {
+  // Check if string needs quoting (contains special chars or starts with special chars)
+  const needsQuoting = /[:#\[\]{}|>*&!%@`]|^\s|^\d/.test(str);
+  
+  if (needsQuoting) {
+    // Escape quotes and wrap in quotes
+    return `"${str.replace(/"/g, '\\"')}"`;
+  }
+  
+  return str;
+}
+
+/**
+ * Validate YAML structure after generation
+ * Requirements: 2.5, 6.5
+ */
+export function validateYAML(yamlString: string): { valid: boolean; errors: string[] } {
+  const errors: string[] = [];
+  
+  // Check for basic YAML syntax issues
+  const lines = yamlString.split('\n');
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    
+    // Skip empty lines and comments
+    if (!line.trim() || line.trim().startsWith('#')) {
+      continue;
+    }
+    
+    // Check indentation (must be multiples of 2)
+    const indent = line.search(/\S/);
+    if (indent % 2 !== 0) {
+      errors.push(`Line ${i + 1}: Invalid indentation (must be multiples of 2 spaces)`);
+    }
+    
+    // Check for tabs (YAML doesn't allow tabs for indentation)
+    if (line.includes('\t')) {
+      errors.push(`Line ${i + 1}: Tabs not allowed in YAML (use spaces)`);
+    }
+    
+    // Check for proper key-value format
+    if (line.includes(':') && !line.trim().startsWith('-')) {
+      const colonIndex = line.indexOf(':');
+      const afterColon = line.substring(colonIndex + 1).trim();
+      
+      // If there's content after colon, ensure proper spacing
+      if (afterColon && line[colonIndex + 1] !== ' ') {
+        errors.push(`Line ${i + 1}: Missing space after colon`);
+      }
+    }
+  }
+  
+  // Check for required top-level keys
+  if (!yamlString.includes('agent:')) {
+    errors.push('Missing required field: agent');
+  }
+  if (!yamlString.includes('module:')) {
+    errors.push('Missing required field: module');
+  }
+  if (!yamlString.includes('methods:')) {
+    errors.push('Missing required field: methods');
+  }
+  
+  return {
+    valid: errors.length === 0,
+    errors
+  };
+}
+
+/**
+ * Convert Kiro spec to YAML string with improved formatting and validation
+ * Requirements: 2.5, 6.5
  */
 export function specToYAML(spec: KiroSpec): string {
-  let yaml = `# Resurrected from CORBA IDL\n`;
-  yaml += `# Module: ${spec.module}\n\n`;
-  yaml += `agent: ${spec.agent}\n`;
-  yaml += `module: ${spec.module}\n\n`;
+  const lines: string[] = [];
   
+  // Header comments
+  lines.push('# Resurrected from CORBA IDL');
+  lines.push(`# Module: ${spec.module}`);
+  lines.push('');
+  
+  // Top-level fields with proper escaping
+  lines.push(`agent: ${escapeYAMLString(spec.agent)}`);
+  lines.push(`module: ${escapeYAMLString(spec.module)}`);
+  lines.push('');
+  
+  // Inputs section (optional)
   if (spec.inputs.length > 0) {
-    yaml += `inputs:\n`;
+    lines.push('inputs:');
     spec.inputs.forEach(input => {
-      yaml += `  - name: ${input.name}\n`;
-      yaml += `    type: ${input.type}\n`;
+      lines.push(`  - name: ${escapeYAMLString(input.name)}`);
+      lines.push(`    type: ${escapeYAMLString(input.type)}`);
     });
-    yaml += `\n`;
+    lines.push('');
   }
   
+  // Outputs section (optional)
   if (spec.outputs.length > 0) {
-    yaml += `outputs:\n`;
+    lines.push('outputs:');
     spec.outputs.forEach(output => {
-      yaml += `  - name: ${output.name}\n`;
-      yaml += `    type: ${output.type}\n`;
+      lines.push(`  - name: ${escapeYAMLString(output.name)}`);
+      lines.push(`    type: ${escapeYAMLString(output.type)}`);
     });
-    yaml += `\n`;
+    lines.push('');
   }
   
-  yaml += `methods:\n`;
-  spec.methods.forEach(method => {
-    yaml += `  - name: ${method.name}\n`;
-    yaml += `    params:\n`;
-    method.params.forEach(param => {
-      yaml += `      - name: ${param.name}\n`;
-      yaml += `        type: ${param.type}\n`;
-    });
-    yaml += `    returns: ${method.returns}\n`;
-    if (method.errors.length > 0) {
-      yaml += `    errors:\n`;
-      method.errors.forEach(error => {
-        yaml += `      - ${error}\n`;
+  // Methods section (required)
+  lines.push('methods:');
+  spec.methods.forEach((method, methodIndex) => {
+    lines.push(`  - name: ${escapeYAMLString(method.name)}`);
+    
+    // Parameters
+    if (method.params.length > 0) {
+      lines.push('    params:');
+      method.params.forEach(param => {
+        lines.push(`      - name: ${escapeYAMLString(param.name)}`);
+        lines.push(`        type: ${escapeYAMLString(param.type)}`);
       });
+    } else {
+      lines.push('    params: []');
+    }
+    
+    // Return type
+    lines.push(`    returns: ${escapeYAMLString(method.returns)}`);
+    
+    // Errors (optional)
+    if (method.errors.length > 0) {
+      lines.push('    errors:');
+      method.errors.forEach(error => {
+        lines.push(`      - ${escapeYAMLString(error)}`);
+      });
+    }
+    
+    // Add blank line between methods (except after last method)
+    if (methodIndex < spec.methods.length - 1) {
+      lines.push('');
     }
   });
   
+  // Types section (optional)
   if (spec.types.length > 0) {
-    yaml += `\ntypes:\n`;
-    spec.types.forEach(type => {
-      yaml += `  - name: ${type.name}\n`;
-      yaml += `    fields:\n`;
-      type.fields.forEach(field => {
-        yaml += `      - name: ${field.name}\n`;
-        yaml += `        type: ${field.type}\n`;
-      });
+    lines.push('');
+    lines.push('types:');
+    spec.types.forEach((type, typeIndex) => {
+      lines.push(`  - name: ${escapeYAMLString(type.name)}`);
+      
+      if (type.fields.length > 0) {
+        lines.push('    fields:');
+        type.fields.forEach(field => {
+          lines.push(`      - name: ${escapeYAMLString(field.name)}`);
+          lines.push(`        type: ${escapeYAMLString(field.type)}`);
+        });
+      } else {
+        lines.push('    fields: []');
+      }
+      
+      // Add blank line between types (except after last type)
+      if (typeIndex < spec.types.length - 1) {
+        lines.push('');
+      }
     });
+  }
+  
+  // Join lines and ensure single trailing newline
+  const yaml = lines.join('\n') + '\n';
+  
+  // Validate the generated YAML
+  const validation = validateYAML(yaml);
+  if (!validation.valid) {
+    console.warn('Generated YAML has validation warnings:', validation.errors);
   }
   
   return yaml;

@@ -1,4 +1,4 @@
-// Feature: multi-agent-skeleton, Property 13: Message sequence replay
+// Feature: idl-resurrection, Property 13: Message sequence replay
 // Validates: Requirements 5.4
 
 import fc from 'fast-check';

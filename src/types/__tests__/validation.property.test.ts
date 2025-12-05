@@ -1,4 +1,4 @@
-// Feature: multi-agent-skeleton, Property 2: Invalid specification rejection
+// Feature: idl-resurrection, Property 2: Invalid specification rejection
 // **Validates: Requirements 1.5**
 
 import fc from 'fast-check';

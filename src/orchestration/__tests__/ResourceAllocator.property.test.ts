@@ -86,7 +86,7 @@ function messageArbitrary(workflowId: string, sourceAgentId: string, targetAgent
 // ============================================================================
 
 describe('ResourceAllocator Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 23: Fair resource allocation
+  // Feature: idl-resurrection, Property 23: Fair resource allocation
   describe('Property 23: Fair resource allocation', () => {
     it('should allocate resources fairly among concurrent agents without starvation', async () => {
       await fc.assert(

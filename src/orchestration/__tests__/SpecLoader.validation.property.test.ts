@@ -1,5 +1,5 @@
 // Property-Based Tests for Spec Validation
-// Feature: multi-agent-skeleton, Property 10: Spec validation before application
+// Feature: idl-resurrection, Property 10: Spec validation before application
 
 import fc from 'fast-check';
 import { SpecLoader } from '../SpecLoader';

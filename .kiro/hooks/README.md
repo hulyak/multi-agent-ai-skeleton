@@ -107,7 +107,7 @@ These hooks reduced manual work by ~30% and caught bugs before they reached prod
 1. Modify `IntentDetectionAgent.ts`
 2. **Hook triggers**: Tests run automatically
 3. Tests pass ✅
-4. Modify spec in `.kiro/specs/multi-agent-skeleton/design.md`
+4. Modify spec in `.kiro/specs/idl-resurrection/design.md`
 5. **Hook triggers**: Reminder to update implementation
 6. Update agent based on spec changes
 7. Say "ready to commit"

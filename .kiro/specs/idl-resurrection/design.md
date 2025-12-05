@@ -183,7 +183,7 @@ interface ResurrectionState {
 - Animate resurrection process
 - Display before/after comparison
 - Provide download functionality
-- Show list of resurrected agents
+- Show list of CrewOS agents
 
 ## Data Models
 

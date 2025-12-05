@@ -1,6 +1,6 @@
 # UI Directory
 
-This directory contains reusable UI components for the Multi-Agent Skeleton project.
+This directory contains reusable UI components for CrewOS: CORBA Reborn.
 
 ## 🎃 Spooky Theme Components
 
@@ -148,4 +148,4 @@ import { SpookyButton, AgentConsole } from '@/ui';
 
 ## 🎃 Kiroween Ready!
 
-All components are production-ready and optimized for the Multi-Agent Skeleton project. Happy building! 👻💀🤖
+All components are production-ready and optimized for CrewOS: CORBA Reborn. Happy building! 👻💀🤖

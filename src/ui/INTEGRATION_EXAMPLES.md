@@ -1,6 +1,6 @@
 # Spooky Theme Integration Examples
 
-Real-world examples of integrating the spooky theme into your Multi-Agent Skeleton pages.
+Real-world examples of integrating the spooky theme into CrewOS: CORBA Reborn pages.
 
 ## Example 1: Landing Page with Spooky Theme
 

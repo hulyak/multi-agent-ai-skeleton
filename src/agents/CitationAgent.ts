@@ -204,8 +204,9 @@ export class CitationAgent extends BaseAgent {
       parts.push(`(${year})`);
     }
 
-    // Title
-    parts.push(citation.title);
+    // Title - always include, even if empty
+    const trimmedTitle = citation.title.trim();
+    parts.push(trimmedTitle || 'Untitled');
 
     // Source
     if (citation.source) {
@@ -232,8 +233,9 @@ export class CitationAgent extends BaseAgent {
       parts.push(citation.author);
     }
 
-    // Title (in quotes)
-    parts.push(`"${citation.title}"`);
+    // Title (in quotes) - always include, even if empty
+    const trimmedTitle = citation.title.trim();
+    parts.push(`"${trimmedTitle || 'Untitled'}"`);
 
     // Source
     if (citation.source) {
@@ -265,8 +267,9 @@ export class CitationAgent extends BaseAgent {
       parts.push(citation.author);
     }
 
-    // Title (italicized - represented with underscores)
-    parts.push(`_${citation.title}_`);
+    // Title (italicized - represented with underscores) - always include, even if empty
+    const trimmedTitle = citation.title.trim();
+    parts.push(`_${trimmedTitle || 'Untitled'}_`);
 
     // Source and Year
     const sourceAndYear: string[] = [];

@@ -1,6 +1,6 @@
 # Spooky UI Theme Guide
 
-A comprehensive guide to using the spooky Halloween-themed UI components in the Multi-Agent Skeleton project.
+A comprehensive guide to using the spooky Halloween-themed UI components in CrewOS: CORBA Reborn.
 
 ## Table of Contents
 

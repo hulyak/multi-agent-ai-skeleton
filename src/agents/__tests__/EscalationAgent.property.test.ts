@@ -1,5 +1,5 @@
 // Property-Based Tests for Escalation Agent
-// Feature: multi-agent-skeleton, Property 16: Escalation routing
+// Feature: idl-resurrection, Property 16: Escalation routing
 // Validates: Requirements 6.5
 
 import fc from 'fast-check';
@@ -107,7 +107,7 @@ function anyQueryArbitrary(): fc.Arbitrary<string> {
 // ============================================================================
 
 describe('EscalationAgent Property Tests', () => {
-  // Feature: multi-agent-skeleton, Property 16: Escalation routing
+  // Feature: idl-resurrection, Property 16: Escalation routing
   describe('Property 16: Escalation routing', () => {
     it('should route any query requiring human intervention to the escalation queue', async () => {
       await fc.assert(

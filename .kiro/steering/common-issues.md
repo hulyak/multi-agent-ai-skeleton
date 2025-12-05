@@ -142,6 +142,37 @@ import { Agent } from '../../agents'
 - Add setup instructions for each app
 **Prevention:** Documentation hook reminds on major changes
 
+## IDL Parsing Issues
+
+### Malformed IDL Handling
+**Problem:** Parser crashes on malformed CORBA IDL syntax
+**Root Cause:** Not handling edge cases in regex patterns
+**Solution:**
+- Wrap parsing in try-catch blocks
+- Return structured errors with line numbers
+- Skip malformed sections and continue parsing
+- Test with intentionally broken IDL files
+**Prevention:** Property-based tests with malformed input generators
+
+### Type Mapping Gaps
+**Problem:** Unknown CORBA types causing conversion failures
+**Root Cause:** Incomplete type mapping dictionary
+**Solution:**
+- Add fallback for unknown types (preserve as-is)
+- Log warnings for unmapped types
+- Maintain comprehensive type mapping table
+- Test with all CORBA primitive types
+**Prevention:** Unit tests for each CORBA type mapping
+
+### Nested Module Complexity
+**Problem:** Deeply nested modules not parsing correctly
+**Root Cause:** Regex not handling recursive structures
+**Solution:**
+- Flatten nested modules during parsing
+- Track module hierarchy in metadata
+- Test with 3+ levels of nesting
+**Prevention:** Edge case tests for nested structures
+
 ## Lessons Learned
 
 1. **Read submission requirements first** - Avoid architectural rework
@@ -152,6 +183,8 @@ import { Agent } from '../../agents'
 6. **Use Kiro tools efficiently** - getDiagnostics > bash commands
 7. **Keep specs and code in sync** - Drift causes confusion
 8. **Test interactivity thoroughly** - SVG click handlers need special attention
+9. **Parse legacy formats defensively** - Always handle malformed input gracefully
+10. **Type mapping needs fallbacks** - Unknown types should preserve, not crash
 
 ## How to Use This Document
 
